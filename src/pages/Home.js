@@ -11,7 +11,7 @@ const Home = () => {
     const [selectedDoctor, setSelectedDoctor] = useState(null);
 
     useEffect(() => {
-        axios.get(`${API}/api/doctors`)
+        axios.get(`${API}/`)
             .then(res => setDoctors(res.data))
             .catch(err => console.error(err));
     }, []);
