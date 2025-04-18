@@ -4,13 +4,14 @@ import { Helmet } from 'react-helmet';
 import DoctorCard from '../components/DoctorCard';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
+const API = process.env.REACT_APP_API_URL;
 
 const Home = () => {
     const [doctors, setDoctors] = useState([]);
     const [selectedDoctor, setSelectedDoctor] = useState(null);
 
     useEffect(() => {
-        axios.get('http://localhost:5001/api/doctors')
+        axios.get(`${API}/api/doctors`)
             .then(res => setDoctors(res.data))
             .catch(err => console.error(err));
     }, []);
