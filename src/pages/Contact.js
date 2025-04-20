@@ -1,41 +1,15 @@
-
-//new again
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser'; 
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
   const [statusMessage, setStatusMessage] = useState('');
+  const API = process.env.REACT_APP_API_URL;
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
-
-  const API = process.env.REACT_APP_API_URL;
-
-// const handleSubmit = async (e) => {
-//   e.preventDefault();
-
-//   try {
-//     const result = await emailjs.send(
-//       'service_7yxiu7e',       // replace
-//       'template_8li5g7c',      // replace
-//       formData,                // the form data
-//       'iO8QiaZje2w5HZ4Lu'        // replace
-//     );
-
-//     console.log(result.text);
-//     setStatusMessage('✅ Message sent successfully!');
-//     setFormData({ name: '', email: '', phone: '', message: '' });
-
-//   } catch (error) {
-//     console.error('Email sending error:', error);
-//     setStatusMessage('❌ Failed to send message. Try again later.');
-//   }
-// };
 
 const handleSubmit = async (e) => {
   e.preventDefault();
@@ -49,7 +23,7 @@ const handleSubmit = async (e) => {
       'iO8QiaZje2w5HZ4Lu'
     );
 
-    // Save to MongoDB via backend
+    // Saving to MongoDB through backend
     const response = await fetch(`${API}/api/contact`, {
       method: 'POST',
       headers: {
@@ -59,7 +33,7 @@ const handleSubmit = async (e) => {
     });
 
     const data = await response.json();
-    console.log('📦 Backend response:', data); // ✅ Add this
+    console.log('Backend response:', data);
 
     if (!response.ok) {
       throw new Error(data.message || 'Failed to save to DB');
@@ -69,16 +43,12 @@ const handleSubmit = async (e) => {
     setFormData({ name: '', email: '', phone: '', message: '' });
 
   } catch (error) {
-    console.error('❌ Submission error:', error); // ✅ See error details here
-    setStatusMessage('❌ Failed to send or save message. Try again later.');
+    console.error('Submission error:', error); // we can see error details here
+    setStatusMessage('Failed to send or save message. Try again later.');
   }
 };
 
 
-
-  
-  
-  
 
   return (
     <div style={{ backgroundColor: '#f0f4f8', minHeight: '100vh' }}>
@@ -119,7 +89,7 @@ const handleSubmit = async (e) => {
         </div>
       </div>
 
-      {/* Contact Form Section */}
+      {/* Contact Form */}
       <div className="container py-5">
         <h2 className="text-center mb-5 fw-bold" style={{ color: '#003366' }}>Get in Touch with Us</h2>
 
