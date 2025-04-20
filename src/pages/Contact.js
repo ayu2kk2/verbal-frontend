@@ -412,9 +412,9 @@ const Contact = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({formData})
+        body: JSON.stringify(formData) // ✅ Not wrapped in { formData }
       });
-      
+  
       const data = await response.json();
   
       if (!response.ok) throw new Error(data.message || 'Failed to submit');
@@ -427,6 +427,7 @@ const Contact = () => {
       setStatusMessage('❌ Failed to send message. Try again later.');
     }
   };
+  
   
   
 
