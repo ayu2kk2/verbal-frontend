@@ -39,12 +39,12 @@ const handleSubmit = async (e) => {
       throw new Error(data.message || 'Failed to save to DB');
     }
 
-    setStatusMessage('✅ Message sent and saved successfully!');
+    setStatusMessage('✅ Message sent successfully!');
     setFormData({ name: '', email: '', phone: '', message: '' });
 
   } catch (error) {
     console.error('Submission error:', error); // we can see error details here
-    setStatusMessage('Failed to send or save message. Try again later.');
+    setStatusMessage('Failed to send message. Try again later.');
   }
 };
 
