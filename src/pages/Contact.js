@@ -357,76 +357,31 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   emailjs.send(
-  //     'service_7yxiu7e',
-  //     'template_8li5g7c',
-  //     formData,
-  //     'iO8QiaZje2w5HZ4Lu'
-  //   )
-  //   .then(() => {
-  //     setStatusMessage('✅ Message sent successfully!');
-  //     setFormData({ name: '', email: '', phone: '', message: '' });
-  //   }, (error) => {
-  //     console.error('EmailJS Error:', error.text);
-  //     setStatusMessage('❌ Failed to send message. Please try again later.');
-  //   });
-  // };
+
   const API = process.env.REACT_APP_API_URL;
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  
-  //   // Save to DB
-  //   try {
-  //     const response = await fetch(`${API}/contact`, {
-  //       method: 'POST',
-  //       headers: { 'Content-Type': 'application/json' },
-  //       body: JSON.stringify(formData),
-  //     });
-  
-  //     if (!response.ok) throw new Error('DB save failed');
-  
-  //     // Send email via EmailJS
-  //     await emailjs.send(
-  //       'service_7yxiu7e',
-  //       'template_8li5g7c',
-  //       formData,
-  //       'iO8QiaZje2w5HZ4Lu'
-  //     );
-  
-  //     setStatusMessage('Message sent successfully!');
-  //     setFormData({ name: '', email: '', phone: '', message: '' });
-  
-  //   } catch (error) {
-  //     console.error('Error:', error);
-  //     setStatusMessage('❌ Failed to send message. Try again later.');
-  //   }
-  // }; //not good 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-  
-    try {
-      const response = await fetch(`${API}/api/contact`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData) // ✅ Not wrapped in { formData }
-      });
-  
-      const data = await response.json();
-  
-      if (!response.ok) throw new Error(data.message || 'Failed to submit');
-  
-      setStatusMessage('✅ Message sent successfully!');
-      setFormData({ name: '', email: '', phone: '', message: '' });
-  
-    } catch (error) {
-      console.error('Error:', error);
-      setStatusMessage('❌ Failed to send message. Try again later.');
-    }
-  };
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    const result = await emailjs.send(
+      'service_7yxiu7e',       // replace
+      'template_8li5g7c',      // replace
+      formData,                // the form data
+      'iO8QiaZje2w5HZ4Lu'        // replace
+    );
+
+    console.log(result.text);
+    setStatusMessage('✅ Message sent successfully!');
+    setFormData({ name: '', email: '', phone: '', message: '' });
+
+  } catch (error) {
+    console.error('Email sending error:', error);
+    setStatusMessage('❌ Failed to send message. Try again later.');
+  }
+};
+
+
   
   
   
