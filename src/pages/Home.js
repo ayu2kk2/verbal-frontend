@@ -115,11 +115,17 @@ const Home = () => {
   const [doctors, setDoctors] = useState([]);
   const [selectedDoctor, setSelectedDoctor] = useState(null);
 
-  useEffect(() => {
-    axios.get(`${API}/`)
+//   useEffect(() => {
+//     axios.get(`${API}/`)
+//       .then(res => setDoctors(res.data))
+//       .catch(err => console.error(err));
+//   }, []);
+useEffect(() => {
+    axios.get(`${API}/api/doctors`)
       .then(res => setDoctors(res.data))
-      .catch(err => console.error(err));
+      .catch(err => console.error('Error fetching doctors:', err));
   }, []);
+  
 
   const handleDoctorClick = (doctor) => {
     setSelectedDoctor(doctor);
@@ -161,31 +167,6 @@ const Home = () => {
              </div>
            </nav>
 
-      {/* Hero Slider */}
-      {/* <div id="heroCarousel" className="carousel slide" data-bs-ride="carousel">
-      {['slide1.png', 'slide2.png', 'slide3.png'].map((img, idx) => (
-  <div key={idx} className={`carousel-item ${idx === 0 ? 'active' : ''}`}>
-    <img
-      src={`/images/${img}`}
-      className="d-block w-100"
-      alt={`Slide ${idx + 1}`}
-      style={{ maxHeight: '500px', objectFit: 'cover' }}
-    />
-    <div className="carousel-caption d-none d-md-block bg-dark bg-opacity-50 p-3 rounded">
-      <h3 className="text-white">Expert Orthopedic Care</h3>
-      <p>Your bone health is our priority</p>
-    </div>
-  </div>
-))}
-
-        <button className="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-          <span className="carousel-control-prev-icon"></span>
-        </button>
-        <button className="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-          <span className="carousel-control-next-icon"></span>
-        </button>
-      </div> */}
-      {/* Hero Slider */}
       <div id="heroCarousel" className="carousel slide" data-bs-ride="carousel">
   <div className="carousel-inner" style={{ height: '500px', overflow: 'hidden' }}>
     {['slide1.jpg', 'slide2.jpg', 'slide3.jpg'].map((img, idx) => (
