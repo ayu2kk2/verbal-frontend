@@ -357,22 +357,53 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   emailjs.send(
+  //     'service_7yxiu7e',
+  //     'template_8li5g7c',
+  //     formData,
+  //     'iO8QiaZje2w5HZ4Lu'
+  //   )
+  //   .then(() => {
+  //     setStatusMessage('✅ Message sent successfully!');
+  //     setFormData({ name: '', email: '', phone: '', message: '' });
+  //   }, (error) => {
+  //     console.error('EmailJS Error:', error.text);
+  //     setStatusMessage('❌ Failed to send message. Please try again later.');
+  //   });
+  // };
+  const API = process.env.REACT_APP_API_URL;
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    emailjs.send(
-      'service_7yxiu7e',
-      'template_8li5g7c',
-      formData,
-      'iO8QiaZje2w5HZ4Lu'
-    )
-    .then(() => {
-      setStatusMessage('✅ Message sent successfully!');
+  
+    // Save to DB
+    try {
+      const response = await fetch(`${API}/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+  
+      if (!response.ok) throw new Error('DB save failed');
+  
+      // Send email via EmailJS
+      await emailjs.send(
+        'service_7yxiu7e',
+        'template_8li5g7c',
+        formData,
+        'iO8QiaZje2w5HZ4Lu'
+      );
+  
+      setStatusMessage('Message sent successfully!');
       setFormData({ name: '', email: '', phone: '', message: '' });
-    }, (error) => {
-      console.error('EmailJS Error:', error.text);
-      setStatusMessage('❌ Failed to send message. Please try again later.');
-    });
+  
+    } catch (error) {
+      console.error('Error:', error);
+      setStatusMessage('❌ Failed to send message. Try again later.');
+    }
   };
+  
 
   return (
     <div style={{ backgroundColor: '#f0f4f8', minHeight: '100vh' }}>
