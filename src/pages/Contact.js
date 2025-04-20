@@ -374,10 +374,38 @@ const Contact = () => {
   //   });
   // };
   const API = process.env.REACT_APP_API_URL;
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  
+  //   // Save to DB
+  //   try {
+  //     const response = await fetch(`${API}/contact`, {
+  //       method: 'POST',
+  //       headers: { 'Content-Type': 'application/json' },
+  //       body: JSON.stringify(formData),
+  //     });
+  
+  //     if (!response.ok) throw new Error('DB save failed');
+  
+  //     // Send email via EmailJS
+  //     await emailjs.send(
+  //       'service_7yxiu7e',
+  //       'template_8li5g7c',
+  //       formData,
+  //       'iO8QiaZje2w5HZ4Lu'
+  //     );
+  
+  //     setStatusMessage('Message sent successfully!');
+  //     setFormData({ name: '', email: '', phone: '', message: '' });
+  
+  //   } catch (error) {
+  //     console.error('Error:', error);
+  //     setStatusMessage('❌ Failed to send message. Try again later.');
+  //   }
+  // }; //not good 
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    // Save to DB
     try {
       const response = await fetch(`${API}/contact`, {
         method: 'POST',
@@ -385,17 +413,11 @@ const Contact = () => {
         body: JSON.stringify(formData),
       });
   
-      if (!response.ok) throw new Error('DB save failed');
+      const data = await response.json();
   
-      // Send email via EmailJS
-      await emailjs.send(
-        'service_7yxiu7e',
-        'template_8li5g7c',
-        formData,
-        'iO8QiaZje2w5HZ4Lu'
-      );
+      if (!response.ok) throw new Error(data.message || 'Failed to submit');
   
-      setStatusMessage('Message sent successfully!');
+      setStatusMessage('✅ Message sent successfully!');
       setFormData({ name: '', email: '', phone: '', message: '' });
   
     } catch (error) {
@@ -403,6 +425,7 @@ const Contact = () => {
       setStatusMessage('❌ Failed to send message. Try again later.');
     }
   };
+  
   
 
   return (
