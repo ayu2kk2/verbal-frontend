@@ -41,7 +41,7 @@ const handleSubmit = async (e) => {
   e.preventDefault();
 
   try {
-    // 1. Send Email via EmailJS
+    // Send Email via EmailJS
     await emailjs.send(
       'service_7yxiu7e',
       'template_8li5g7c',
@@ -49,7 +49,7 @@ const handleSubmit = async (e) => {
       'iO8QiaZje2w5HZ4Lu'
     );
 
-    // 2. Save data to MongoDB via backend
+    // Save to MongoDB via backend
     const response = await fetch(`${API}/api/contact`, {
       method: 'POST',
       headers: {
@@ -59,16 +59,17 @@ const handleSubmit = async (e) => {
     });
 
     const data = await response.json();
+    console.log('📦 Backend response:', data); // ✅ Add this
+
     if (!response.ok) {
       throw new Error(data.message || 'Failed to save to DB');
     }
 
-    // 3. Show success message and reset form
     setStatusMessage('✅ Message sent and saved successfully!');
     setFormData({ name: '', email: '', phone: '', message: '' });
 
   } catch (error) {
-    console.error('Submission error:', error);
+    console.error('❌ Submission error:', error); // ✅ See error details here
     setStatusMessage('❌ Failed to send or save message. Try again later.');
   }
 };
