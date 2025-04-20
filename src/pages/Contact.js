@@ -407,12 +407,14 @@ const Contact = () => {
     e.preventDefault();
   
     try {
-      const response = await fetch(`${API}/contact`, {
+      const response = await fetch(`${API}/api/contact`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({formData})
       });
-  
+      
       const data = await response.json();
   
       if (!response.ok) throw new Error(data.message || 'Failed to submit');
