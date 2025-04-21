@@ -252,7 +252,7 @@ const Contact = () => {
   };
 
   return (
-    <div style={{ backgroundColor: '#f0f4f8' }}>
+    <div style={{ backgroundColor: '#f0f4f8', minHeight: '100vh' }}>
       {/* Navbar */}
       <nav className="navbar navbar-expand-lg navbar-dark py-3 shadow-sm" style={{ backgroundColor: '#003366' }}>
         <div className="container">
@@ -298,35 +298,36 @@ const Contact = () => {
         </p>
 
         <div className="row g-4 align-items-stretch">
-          {/* Left Box */}
+          {/* Left Side */}
           <div className="col-md-6 d-flex">
             <div className="bg-white rounded shadow-sm p-3 w-100 d-flex flex-column justify-content-between">
-              <div className="overflow-hidden rounded" style={{ height: '260px' }}>
+              <div className="overflow-hidden rounded">
                 <img
                   src="/images/hospital.jpg"
-                  alt="Clinic"
-                  className="img-fluid w-100 h-100 rounded shadow-sm"
+                  alt="Clinic Front"
+                  className="img-fluid rounded shadow-sm mb-3"
                   style={{
+                    width: '100%',
+                    maxHeight: '260px',
                     objectFit: 'cover',
-                    transition: 'transform 0.4s ease',
-                    cursor: 'pointer'
+                    transition: 'transform 0.4s ease-in-out'
                   }}
                   onMouseOver={e => e.currentTarget.style.transform = 'scale(1.05)'}
                   onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}
                 />
               </div>
-              <div className="mt-3">
+              <div>
                 <p className="small text-muted mb-2">
-                  At <strong>OrthoCare Kalyan</strong>, we deliver compassionate and expert orthopedic care in the heart of Kalyan.
+                  At <strong>OrthoCare Kalyan</strong>, we provide personalized orthopedic care with state-of-the-art facilities right in the heart of Kalyan.
                 </p>
                 <p className="small text-muted mb-0">
-                  Use the form to connect with us — we're here to help you move better.
+                  Fill out the form and our expert team will reach out to assist you.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Right Box */}
+          {/* Right Side */}
           <div className="col-md-6 d-flex">
             <form onSubmit={handleSubmit} className="bg-white p-4 shadow rounded w-100 d-flex flex-column justify-content-between">
               <div>
@@ -348,23 +349,7 @@ const Contact = () => {
                 </div>
               </div>
               <div>
-                <button
-                  type="submit"
-                  className="btn btn-primary w-100"
-                  style={{
-                    backgroundColor: '#003366',
-                    border: 'none',
-                    transition: 'all 0.3s ease',
-                  }}
-                  onMouseOver={(e) => {
-                    e.target.style.transform = 'scale(1.03)';
-                    e.target.style.boxShadow = '0 0 10px rgba(0,0,0,0.2)';
-                  }}
-                  onMouseOut={(e) => {
-                    e.target.style.transform = 'scale(1)';
-                    e.target.style.boxShadow = 'none';
-                  }}
-                >
+                <button type="submit" className="btn btn-primary w-100" style={{ backgroundColor: '#003366', border: 'none' }}>
                   Send Message
                 </button>
                 {statusMessage && (
@@ -374,6 +359,42 @@ const Contact = () => {
             </form>
           </div>
         </div>
+      </div>
+
+      {/* WhatsApp Buttons */}
+      <div className="text-center mt-5">
+        <h4 className="mb-3" style={{ color: '#003366' }}>Need Help Fast?</h4>
+        <a
+          href="https://wa.me/919999999999?text=Hi%20I%20would%20like%20to%20get%20more%20information."
+          className="btn btn-success me-2 mb-2"
+          style={{ padding: '10px 25px', fontSize: '16px' }}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          💬 Chat on WhatsApp
+        </a>
+        <a
+          href="tel:+919999999999"
+          className="btn btn-outline-success mb-2"
+          style={{ padding: '10px 25px', fontSize: '16px' }}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          📞 Call Our Team
+        </a>
+      </div>
+
+      {/* Google Map */}
+      <div className="mt-5 shadow rounded overflow-hidden">
+        <iframe
+          title="clinic-location"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.1160983873!2d72.74109983902492!3d19.207681931152422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be796b7f6e44e3f%3A0xe9536ad86bb3e50e!2sKalyan%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1615995970585!5m2!1sen!2sin"
+          width="100%"
+          height="350"
+          style={{ border: 0 }}
+          allowFullScreen=""
+          loading="lazy"
+        ></iframe>
       </div>
 
       {/* Footer */}
