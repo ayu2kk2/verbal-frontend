@@ -311,20 +311,6 @@ const Contact = () => {
             />
           </div>
 
-          {/* Info below the Image */}
-          <div className="col-lg-6">
-            <p className="lead" style={{ color: '#003366' }}>
-              At OrthoCare Kalyan, we are committed to providing the best orthopedic care tailored to your needs.
-              Whether you're recovering from surgery or managing a chronic condition, our expert team is here to help.
-              Contact us today to discuss your concerns and begin your journey toward better health.
-            </p>
-
-            <p style={{ color: '#003366' }}>
-              We are located in the heart of Kalyan, and our clinic is equipped with state-of-the-art facilities to offer you the best treatment. 
-              Feel free to fill out the contact form, and our team will reach out to you as soon as possible.
-            </p>
-          </div>
-
           {/* Form */}
           <div className="col-lg-6">
             <form onSubmit={handleSubmit} className="bg-white p-4 shadow-lg rounded border border-2">
@@ -352,6 +338,21 @@ const Contact = () => {
               )}
             </form>
           </div>
+        </div>
+
+        {/* New Information Section Below the Image */}
+        <div className="text-center mt-5">
+          <h4 className="fw-bold" style={{ color: '#003366' }}>Visit Us</h4>
+          <p className="lead" style={{ color: '#003366' }}>
+            We are located in the heart of Kalyan, Maharashtra, and our clinic is easily accessible to all.
+            Feel free to drop by for consultations, treatments, or just to meet our friendly staff.
+          </p>
+          <address>
+            <strong>OrthoCare Kalyan</strong><br />
+            123 Ortho Street, Kalyan, MH, 421301, India<br />
+            Phone: +91 99999 99999<br />
+            Email: <a href="mailto:care@orthocarekalyan.com" style={{ textDecoration: 'none', color: '#003366' }}>care@orthocarekalyan.com</a>
+          </address>
         </div>
 
         {/* WhatsApp Buttons */}
@@ -410,16 +411,4 @@ const Contact = () => {
             <div className="col-md-4 mb-4">
               <h5>Contact</h5>
               <p>123 Ortho Street, Kalyan, MH</p>
-              <p>Email: care@orthocarekalyan.com</p>
-              <p>Phone: +91 99999 99999</p>
-            </div>
-          </div>
-          <hr className="border-top border-light" />
-          <p className="text-center mb-0">&copy; {new Date().getFullYear()} OrthoCare Kalyan. All rights reserved.</p>
-        </div>
-      </footer>
-    </div>
-  );
-};
-
-export default Contact;
+              <p
