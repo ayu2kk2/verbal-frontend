@@ -204,8 +204,8 @@ const Blog = () => {
         {
             id: 2,
             title: 'When Should You See an Orthopedic Specialist?',
-            excerpt: `Learn the signs that indicate you need to visit an orthopedic doctor...',
-            content: 'If you’re experiencing persistent pain, swelling, or discomfort in your joints, bones, or muscles, it may be time to see an orthopedic specialist. This blog helps you identify when a visit is necessary and what to expect. Early intervention can often prevent small issues from becoming more serious, leading to faster recovery and fewer complications. Don't wait until the pain becomes unbearable—your health is worth the attention.`,
+            excerpt: 'Learn the signs that indicate you need to visit an orthopedic doctor...',
+            content: 'If you’re experiencing persistent pain, swelling, or discomfort in your joints, bones, or muscles, it may be time to see an orthopedic specialist. This blog helps you identify when a visit is necessary and what to expect. Early intervention can often prevent small issues from becoming more serious, leading to faster recovery and fewer complications. Don't wait until the pain becomes unbearable—your health is worth the attention.',
             publishedDate: '2023-12-15',
             image: '/images/orthodoc.jpg',
         },
