@@ -557,23 +557,24 @@ const Contact = () => {
         </div>
       </div>
 
-      {/* Contact Section with Image and Text in White Box */}
+      {/* Contact Form */}
       <div className="container py-5">
-        <div className="bg-white p-4 rounded shadow-sm mb-5">
-          <div className="row align-items-start g-4">
-            {/* Left Side: Image and Info */}
-            <div className="col-lg-6">
+        <h2 className="text-center mb-4 fw-bold" style={{ color: '#003366' }}>Get in Touch with Us</h2>
+        <p className="text-center mb-5" style={{ color: '#003366', fontSize: '18px' }}>
+          We are here to assist you. Please fill out the form and we'll get back to you as soon as possible.
+        </p>
+
+        <div className="row align-items-start g-4">
+          {/* Left Side: Image and Info */}
+          <div className="col-lg-6">
+            <div className="bg-white p-4 rounded shadow-sm">
               <img
                 src="/images/hospital.jpg"
                 alt="Clinic Front"
                 className="img-fluid rounded mb-3"
                 style={{ objectFit: 'cover', width: '100%', maxHeight: '400px' }}
               />
-            </div>
-
-            {/* Right Side: Info Box */}
-            <div className="col-lg-6">
-              <div className="bg-white p-4 rounded shadow-sm">
+              <div>
                 <p style={{ fontSize: '16px', color: '#003366' }}>
                   At OrthoCare Kalyan, we are committed to providing the best orthopedic care tailored to your needs.
                   Whether you're recovering from surgery or managing a chronic condition, our expert team is here to help.
@@ -591,16 +592,8 @@ const Contact = () => {
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Contact Form */}
-        <h2 className="text-center mb-5 fw-bold" style={{ color: '#003366' }}>Get in Touch with Us</h2>
-        <p className="text-center mb-5" style={{ color: '#003366', fontSize: '18px' }}>
-          We are here to assist you. Please fill out the form and we'll get back to you as soon as possible.
-        </p>
-
-        <div className="row align-items-start g-4">
-          {/* Left Side: Contact Form */}
+          {/* Right Side: Contact Form */}
           <div className="col-lg-6">
             <div className="bg-white p-4 rounded shadow-sm">
               <form onSubmit={handleSubmit}>
