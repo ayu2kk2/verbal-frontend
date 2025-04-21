@@ -203,7 +203,7 @@
 
 // export default Contact;
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import emailjs from '@emailjs/browser'; 
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -211,25 +211,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
   const [statusMessage, setStatusMessage] = useState('');
-  const [callLogs, setCallLogs] = useState([]);
   const API = process.env.REACT_APP_API_URL;
-
-  // Fetching call logs from the backend API
-  useEffect(() => {
-    const fetchCallLogs = async () => {
-      try {
-        const response = await fetch(`${API}/api/call-logs`);
-        const data = await response.json();
-        if (response.ok) {
-          setCallLogs(data);
-        }
-      } catch (error) {
-        console.error('Error fetching call logs:', error);
-      }
-    };
-
-    fetchCallLogs();
-  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -335,12 +317,6 @@ const Contact = () => {
               </p>
               <p style={{ fontSize: '16px', color: '#003366' }}>
                 <strong>Address:</strong> 123 Ortho Street, Kalyan, Maharashtra, India
-              </p>
-              <p style={{ fontSize: '16px', color: '#003366' }}>
-                <strong>Business Hours:</strong> Monday - Friday: 9:00 AM - 6:00 PM
-              </p>
-              <p style={{ fontSize: '16px', color: '#003366' }}>
-                <strong>Contact Info:</strong> care@orthocarekalyan.com | +91 99999 99999
               </p>
             </div>
           </div>
