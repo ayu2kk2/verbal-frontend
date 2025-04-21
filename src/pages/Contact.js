@@ -204,178 +204,63 @@
 // export default Contact;
 
 
-import React, { useState } from 'react';
-import emailjs from '@emailjs/browser';
-import { Link } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
+<div className="container py-5">
+  <h2 className="text-center fw-bold" style={{ color: '#003366' }}>Get in Touch with Us</h2>
+  <p className="text-center text-muted mb-5" style={{ fontSize: '15px' }}>
+    Let’s connect and find the best solution for your orthopedic needs.
+  </p>
 
-const Contact = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
-  const [statusMessage, setStatusMessage] = useState('');
-  const API = process.env.REACT_APP_API_URL;
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      await emailjs.send(
-        'service_7yxiu7e',
-        'template_8li5g7c',
-        formData,
-        'iO8QiaZje2w5HZ4Lu'
-      );
-
-      const response = await fetch(`${API}/api/contact`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.message || 'Failed to save to DB');
-
-      setStatusMessage('✅ Message sent successfully!');
-      setFormData({ name: '', email: '', phone: '', message: '' });
-
-    } catch (error) {
-      console.error('Submission error:', error);
-      setStatusMessage('Failed to send message. Try again later.');
-    }
-  };
-
-  return (
-    <div style={{ backgroundColor: '#f0f4f8' }}>
-      {/* Navbar */}
-      <nav className="navbar navbar-expand-lg navbar-dark py-3 shadow-sm" style={{ backgroundColor: '#003366' }}>
-        <div className="container">
-          <Link className="navbar-brand d-flex align-items-center fw-bold" to="/">
-            <img
-              src="/images/ocare.png"
-              alt="Ocare Logo"
-              className="rounded-circle shadow-sm"
-              style={{ height: '40px', width: '40px', objectFit: 'cover', marginRight: '10px' }}
-            />
-            OrthoCare Kalyan
-          </Link>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav ms-auto">
-              <li className="nav-item"><Link className="nav-link" to="/">Home</Link></li>
-              <li className="nav-item"><Link className="nav-link" to="/blog">Blog</Link></li>
-              <li className="nav-item"><Link className="nav-link active" to="/contact">Contact Us</Link></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-
-      {/* Contact Section */}
-      <div className="container py-5">
-        <h2 className="text-center fw-bold" style={{ color: '#003366' }}>Get in Touch with Us</h2>
-        <p className="text-center text-muted mb-5" style={{ fontSize: '15px' }}>
-          Let’s connect and find the best solution for your orthopedic needs.
-        </p>
-
-        <div className="row g-4">
-          {/* Left Side */}
-          <div className="col-md-6">
-            <div className="bg-white rounded shadow-sm h-100 d-flex flex-column p-3">
-              <img
-                src="/images/hospital.jpg"
-                alt="Clinic"
-                className="img-fluid rounded shadow-sm mb-3"
-                style={{ width: '100%', maxHeight: '260px', objectFit: 'cover' }}
-              />
-              <div className="small text-muted">
-                <p>
-                  At <strong>OrthoCare Kalyan</strong>, we’re dedicated to your orthopedic health. Our experienced team ensures you receive care that’s personal, effective, and modern.
-                </p>
-                <p>
-                  Conveniently located in central Kalyan, our clinic is equipped with the latest technology to support your recovery journey.
-                </p>
-                <address className="mb-0">
-                  <strong>Address:</strong><br />
-                  123 Ortho Street, Kalyan, MH 421301<br />
-                  <strong>Phone:</strong> +91 99999 99999<br />
-                  <strong>Email:</strong>{' '}
-                  <a href="mailto:care@orthocarekalyan.com" className="text-decoration-none">care@orthocarekalyan.com</a>
-                </address>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Side */}
-          <div className="col-md-6">
-            <div className="bg-white p-4 rounded shadow-sm h-100">
-              <form onSubmit={handleSubmit}>
-                <div className="mb-3">
-                  <label className="form-label">Name</label>
-                  <input type="text" name="name" className="form-control" value={formData.name} onChange={handleChange} required />
-                </div>
-                <div className="mb-3">
-                  <label className="form-label">Email</label>
-                  <input type="email" name="email" className="form-control" value={formData.email} onChange={handleChange} required />
-                </div>
-                <div className="mb-3">
-                  <label className="form-label">Phone</label>
-                  <input type="text" name="phone" className="form-control" value={formData.phone} onChange={handleChange} />
-                </div>
-                <div className="mb-3">
-                  <label className="form-label">Message</label>
-                  <textarea name="message" className="form-control" rows="4" value={formData.message} onChange={handleChange} required />
-                </div>
-                <button type="submit" className="btn btn-primary w-100" style={{ backgroundColor: '#003366' }}>
-                  Send Message
-                </button>
-                {statusMessage && <div className="alert alert-info mt-3 mb-0">{statusMessage}</div>}
-              </form>
-            </div>
-          </div>
-        </div>
-
-        {/* WhatsApp and Call buttons */}
-        <div className="text-center mt-5">
-          <h4 style={{ color: '#003366' }}>Need Help Fast?</h4>
-          <a
-            href="https://wa.me/919999999999"
-            className="btn btn-success me-2 mt-2"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            💬 Chat on WhatsApp
-          </a>
-          <a
-            href="tel:+919999999999"
-            className="btn btn-outline-success mt-2"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            📞 Call Our Team
-          </a>
-        </div>
-
-        {/* Google Map */}
-        <div className="mt-5 shadow rounded overflow-hidden">
-          <iframe
-            title="clinic-location"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.1160983873!2d72.74109983902492!3d19.207681931152422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be796b7f6e44e3f%3A0xe9536ad86bb3e50e!2sKalyan%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1615995970585!5m2!1sen!2sin"
-            width="100%"
-            height="350"
-            style={{ border: 0 }}
-            allowFullScreen=""
-            loading="lazy"
-          ></iframe>
+  <div className="row g-4 align-items-stretch">
+    {/* Left Side - Image and Info */}
+    <div className="col-md-6 d-flex">
+      <div className="bg-white rounded shadow-sm p-3 w-100 d-flex flex-column justify-content-between">
+        <div>
+          <img
+            src="/images/hospital.jpg"
+            alt="Clinic Front"
+            className="img-fluid rounded shadow-sm mb-3"
+            style={{ width: '100%', maxHeight: '260px', objectFit: 'cover' }}
+          />
+          <p className="small text-muted mb-2">
+            At <strong>OrthoCare Kalyan</strong>, we are committed to providing top-quality orthopedic care tailored to your unique needs. Whether you're recovering from surgery or managing a long-term condition, our expert team is here to help.
+          </p>
+          <p className="small text-muted mb-0">
+            Visit us in the heart of Kalyan. Our clinic is equipped with modern facilities to offer effective and compassionate care. Simply fill out the contact form and we’ll get in touch with you soon.
+          </p>
         </div>
       </div>
     </div>
-  );
-};
 
-export default Contact;
+    {/* Right Side - Contact Form */}
+    <div className="col-md-6 d-flex">
+      <form onSubmit={handleSubmit} className="bg-white p-4 shadow rounded w-100 d-flex flex-column justify-content-between">
+        <div>
+          <div className="mb-3">
+            <label className="form-label">Name</label>
+            <input type="text" name="name" className="form-control" value={formData.name} onChange={handleChange} required />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Email</label>
+            <input type="email" name="email" className="form-control" value={formData.email} onChange={handleChange} required />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Phone</label>
+            <input type="text" name="phone" className="form-control" value={formData.phone} onChange={handleChange} />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Message</label>
+            <textarea name="message" className="form-control" rows="4" value={formData.message} onChange={handleChange} required />
+          </div>
+        </div>
+        <div>
+          <button type="submit" className="btn btn-primary w-100" style={{ backgroundColor: '#003366', border: 'none' }}>
+            Send Message
+          </button>
+          {statusMessage && (
+            <div className="alert alert-info text-center mt-3 mb-0">{statusMessage}</div>
+          )}
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
