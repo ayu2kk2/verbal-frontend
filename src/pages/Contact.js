@@ -1,67 +1,267 @@
-import React, { useState } from 'react';
-import emailjs from '@emailjs/browser'; 
+// import React, { useState } from 'react';
+// import emailjs from '@emailjs/browser'; 
+// import { Link } from 'react-router-dom';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// const Contact = () => {
+//   const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
+//   const [statusMessage, setStatusMessage] = useState('');
+//   const API = process.env.REACT_APP_API_URL;
+
+//   const handleChange = (e) => {
+//     setFormData({ ...formData, [e.target.name]: e.target.value });
+//   };
+
+// const handleSubmit = async (e) => {
+//   e.preventDefault();
+
+//   try {
+//     // Send Email via EmailJS
+//     await emailjs.send(
+//       'service_7yxiu7e',
+//       'template_8li5g7c',
+//       formData,
+//       'iO8QiaZje2w5HZ4Lu'
+//     );
+
+//     // Saving to MongoDB through backend
+//     const response = await fetch(`${API}/api/contact`, {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify(formData),
+//     });
+
+//     const data = await response.json();
+//     console.log('Backend response:', data);
+
+//     if (!response.ok) {
+//       throw new Error(data.message || 'Failed to save to DB');
+//     }
+
+//     setStatusMessage('✅ Message sent successfully!');
+//     setFormData({ name: '', email: '', phone: '', message: '' });
+
+//   } catch (error) {
+//     console.error('Submission error:', error); // we can see error details here
+//     setStatusMessage('Failed to send message. Try again later.');
+//   }
+// };
+
+
+
+//   return (
+//     <div style={{ backgroundColor: '#f0f4f8', minHeight: '100vh' }}>
+//       {/* Navbar */}
+//       <nav className="navbar navbar-expand-lg navbar-dark py-3 shadow-sm" style={{ backgroundColor: '#003366' }}>
+//         <div className="container">
+//           <Link className="navbar-brand d-flex align-items-center fw-bold" to="/">
+//             <img
+//               src="/images/ocare.png"
+//               alt="Ocare Logo"
+//               className="rounded-circle shadow-sm"
+//               style={{ height: '40px', width: '40px', objectFit: 'cover', marginRight: '10px' }}
+//             />
+//             OrthoCare Kalyan
+//           </Link>
+//           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+//             <span className="navbar-toggler-icon"></span>
+//           </button>
+//           <div className="collapse navbar-collapse" id="navbarNav">
+//             <ul className="navbar-nav ms-auto">
+//               <li className="nav-item"><Link className="nav-link" to="/">Home</Link></li>
+//               <li className="nav-item"><Link className="nav-link" to="/blog">Blog</Link></li>
+//               <li className="nav-item"><Link className="nav-link active" to="/contact">Contact Us</Link></li>
+//             </ul>
+//           </div>
+//         </div>
+//       </nav>
+
+//       {/* Header Image */}
+//       <div className="container-fluid p-0">
+//         <div style={{ width: '100%', height: '300px', overflow: 'hidden' }}>
+//           <img
+//             src="/images/contact.jpg"
+//             alt="Contact Us"
+//             className="w-100 h-100"
+//             style={{ objectFit: 'cover', objectPosition: 'center' }}
+//           />
+//         </div>
+//       </div>
+
+//       {/* Contact Form */}
+//       <div className="container py-5">
+//         <h2 className="text-center mb-5 fw-bold" style={{ color: '#003366' }}>Get in Touch with Us</h2>
+
+//         <div className="row align-items-center g-4">
+//           {/* Image */}
+//           <div className="col-lg-6 text-center">
+//             <img 
+//               src="/images/hospital.jpg" 
+//               alt="Clinic Front" 
+//               className="img-fluid rounded shadow" 
+//               style={{ maxHeight: '400px', objectFit: 'cover', width: '100%' }} 
+//             />
+//           </div>
+
+//           {/* Form */}
+//           <div className="col-lg-6">
+//             <form onSubmit={handleSubmit} className="bg-white p-4 shadow rounded">
+//               <div className="mb-3">
+//                 <label className="form-label">Name</label>
+//                 <input type="text" name="name" className="form-control" value={formData.name} onChange={handleChange} required />
+//               </div>
+//               <div className="mb-3">
+//                 <label className="form-label">Email</label>
+//                 <input type="email" name="email" className="form-control" value={formData.email} onChange={handleChange} required />
+//               </div>
+//               <div className="mb-3">
+//                 <label className="form-label">Phone</label>
+//                 <input type="text" name="phone" className="form-control" value={formData.phone} onChange={handleChange} />
+//               </div>
+//               <div className="mb-3">
+//                 <label className="form-label">Message</label>
+//                 <textarea name="message" className="form-control" rows="5" value={formData.message} onChange={handleChange} required />
+//               </div>
+//               <button type="submit" className="btn btn-primary w-100" style={{ backgroundColor: '#003366', border: 'none' }}>
+//                 Send Message
+//               </button>
+//               {statusMessage && (
+//                 <div className="alert alert-info text-center mt-3 mb-0">{statusMessage}</div>
+//               )}
+//             </form>
+//           </div>
+//         </div>
+
+//         {/* WhatsApp Buttons */}
+//         <div className="text-center mt-5">
+//           <h4 className="mb-3" style={{ color: '#003366' }}>Need Help Fast?</h4>
+//           <a
+//             href="https://wa.me/919999999999?text=Hi%20I%20would%20like%20to%20get%20more%20information."
+//             className="btn btn-success me-2 mb-2"
+//             style={{ padding: '10px 25px', fontSize: '16px' }}
+//             target="_blank"
+//             rel="noopener noreferrer"
+//           >
+//             💬 Chat on WhatsApp
+//           </a>
+//           <a
+//             href="tel:+919999999999"
+//             className="btn btn-outline-success mb-2"
+//             style={{ padding: '10px 25px', fontSize: '16px' }}
+//             target="_blank"
+//             rel="noopener noreferrer"
+//           >
+//             📞 Call Our Team
+//           </a>
+//         </div>
+
+//         {/* Google Map */}
+//         <div className="mt-5 shadow rounded overflow-hidden">
+//           <iframe
+//             title="clinic-location"
+//             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.1160983873!2d72.74109983902492!3d19.207681931152422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be796b7f6e44e3f%3A0xe9536ad86bb3e50e!2sKalyan%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1615995970585!5m2!1sen!2sin"
+//             width="100%"
+//             height="350"
+//             style={{ border: 0 }}
+//             allowFullScreen=""
+//             loading="lazy"
+//           ></iframe>
+//         </div>
+//       </div>
+
+//       {/* Footer */}
+//       <footer className="bg-dark text-white pt-5 pb-3 mt-5">
+//         <div className="container">
+//           <div className="row">
+//             <div className="col-md-4 mb-4">
+//               <h5>OrthoCare Kalyan</h5>
+//               <p>Your trusted partner in orthopedic care. We provide top-notch services for bone and joint health.</p>
+//             </div>
+//             <div className="col-md-4 mb-4">
+//               <h5>Quick Links</h5>
+//               <ul className="list-unstyled">
+//                 <li><Link className="text-white text-decoration-none" to="/">Home</Link></li>
+//                 <li><Link className="text-white text-decoration-none" to="/blog">Blog</Link></li>
+//                 <li><Link className="text-white text-decoration-none" to="/contact">Contact Us</Link></li>
+//               </ul>
+//             </div>
+//             <div className="col-md-4 mb-4">
+//               <h5>Contact</h5>
+//               <p>123 Ortho Street, Kalyan, MH</p>
+//               <p>Email: care@orthocarekalyan.com</p>
+//               <p>Phone: +91 99999 99999</p>
+//             </div>
+//           </div>
+//           <hr className="border-top border-light" />
+//           <p className="text-center mb-0">&copy; {new Date().getFullYear()} OrthoCare Kalyan. All rights reserved.</p>
+//         </div>
+//       </footer>
+//     </div>
+//   );
+// };
+
+// export default Contact;
+
+import React, { useState, useRef, useEffect } from 'react';
+import emailjs from '@emailjs/browser';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
-  const [statusMessage, setStatusMessage] = useState('');
+  const [showToast, setShowToast] = useState(false);
+  const toastRef = useRef(null);
   const API = process.env.REACT_APP_API_URL;
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  try {
-    // Send Email via EmailJS
-    await emailjs.send(
-      'service_7yxiu7e',
-      'template_8li5g7c',
-      formData,
-      'iO8QiaZje2w5HZ4Lu'
-    );
+    try {
+      await emailjs.send(
+        'service_7yxiu7e',
+        'template_8li5g7c',
+        formData,
+        'iO8QiaZje2w5HZ4Lu'
+      );
 
-    // Saving to MongoDB through backend
-    const response = await fetch(`${API}/api/contact`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
+      const response = await fetch(`${API}/api/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
 
-    const data = await response.json();
-    console.log('Backend response:', data);
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.message || 'Failed to save to DB');
+      }
 
-    if (!response.ok) {
-      throw new Error(data.message || 'Failed to save to DB');
+      setFormData({ name: '', email: '', phone: '', message: '' });
+      setShowToast(true);
+
+    } catch (error) {
+      console.error('Submission error:', error);
     }
+  };
 
-    setStatusMessage('✅ Message sent successfully!');
-    setFormData({ name: '', email: '', phone: '', message: '' });
-
-  } catch (error) {
-    console.error('Submission error:', error); // we can see error details here
-    setStatusMessage('Failed to send message. Try again later.');
-  }
-};
-
-
+  useEffect(() => {
+    if (showToast && toastRef.current) {
+      const bsToast = new window.bootstrap.Toast(toastRef.current);
+      bsToast.show();
+    }
+  }, [showToast]);
 
   return (
-    <div style={{ backgroundColor: '#f0f4f8', minHeight: '100vh' }}>
+    <div className="bg-light min-vh-100 d-flex flex-column">
       {/* Navbar */}
-      <nav className="navbar navbar-expand-lg navbar-dark py-3 shadow-sm" style={{ backgroundColor: '#003366' }}>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-primary shadow">
         <div className="container">
-          <Link className="navbar-brand d-flex align-items-center fw-bold" to="/">
-            <img
-              src="/images/ocare.png"
-              alt="Ocare Logo"
-              className="rounded-circle shadow-sm"
-              style={{ height: '40px', width: '40px', objectFit: 'cover', marginRight: '10px' }}
-            />
+          <Link className="navbar-brand fw-bold d-flex align-items-center" to="/">
+            <img src="/images/ocare.png" alt="Logo" className="rounded-circle me-2" height="40" width="40" />
             OrthoCare Kalyan
           </Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -71,42 +271,31 @@ const handleSubmit = async (e) => {
             <ul className="navbar-nav ms-auto">
               <li className="nav-item"><Link className="nav-link" to="/">Home</Link></li>
               <li className="nav-item"><Link className="nav-link" to="/blog">Blog</Link></li>
-              <li className="nav-item"><Link className="nav-link active" to="/contact">Contact Us</Link></li>
+              <li className="nav-item"><Link className="nav-link active" to="/contact">Contact</Link></li>
             </ul>
           </div>
         </div>
       </nav>
 
       {/* Header Image */}
-      <div className="container-fluid p-0">
-        <div style={{ width: '100%', height: '300px', overflow: 'hidden' }}>
-          <img
-            src="/images/contact.jpg"
-            alt="Contact Us"
-            className="w-100 h-100"
-            style={{ objectFit: 'cover', objectPosition: 'center' }}
-          />
-        </div>
+      <div className="overflow-hidden" style={{ maxHeight: '300px' }}>
+        <img src="/images/contact.jpg" className="img-fluid w-100" alt="Contact" style={{ objectFit: 'cover' }} />
       </div>
 
-      {/* Contact Form */}
-      <div className="container py-5">
-        <h2 className="text-center mb-5 fw-bold" style={{ color: '#003366' }}>Get in Touch with Us</h2>
+      {/* Main Section */}
+      <div className="container py-5 flex-grow-1">
+        <div className="text-center mb-5">
+          <h2 className="fw-bold text-primary animate__animated animate__fadeInDown">Get in Touch</h2>
+          <p className="text-muted">We're here to help with all your orthopedic needs.</p>
+        </div>
 
-        <div className="row align-items-center g-4">
-          {/* Image */}
-          <div className="col-lg-6 text-center">
-            <img 
-              src="/images/hospital.jpg" 
-              alt="Clinic Front" 
-              className="img-fluid rounded shadow" 
-              style={{ maxHeight: '400px', objectFit: 'cover', width: '100%' }} 
-            />
+        <div className="row g-4 align-items-center">
+          <div className="col-lg-6 animate__animated animate__fadeInLeft">
+            <img src="/images/hospital.jpg" alt="Clinic" className="img-fluid rounded shadow" />
           </div>
 
-          {/* Form */}
-          <div className="col-lg-6">
-            <form onSubmit={handleSubmit} className="bg-white p-4 shadow rounded">
+          <div className="col-lg-6 animate__animated animate__fadeInRight">
+            <form onSubmit={handleSubmit} className="bg-white p-4 shadow rounded needs-validation" noValidate>
               <div className="mb-3">
                 <label className="form-label">Name</label>
                 <input type="text" name="name" className="form-control" value={formData.name} onChange={handleChange} required />
@@ -117,41 +306,27 @@ const handleSubmit = async (e) => {
               </div>
               <div className="mb-3">
                 <label className="form-label">Phone</label>
-                <input type="text" name="phone" className="form-control" value={formData.phone} onChange={handleChange} />
+                <input type="tel" name="phone" className="form-control" value={formData.phone} onChange={handleChange} />
               </div>
               <div className="mb-3">
                 <label className="form-label">Message</label>
-                <textarea name="message" className="form-control" rows="5" value={formData.message} onChange={handleChange} required />
+                <textarea name="message" className="form-control" rows="4" value={formData.message} onChange={handleChange} required />
               </div>
-              <button type="submit" className="btn btn-primary w-100" style={{ backgroundColor: '#003366', border: 'none' }}>
+              <button className="btn btn-primary w-100" type="submit">
+                <span className="spinner-border spinner-border-sm me-2 d-none" role="status" aria-hidden="true"></span>
                 Send Message
               </button>
-              {statusMessage && (
-                <div className="alert alert-info text-center mt-3 mb-0">{statusMessage}</div>
-              )}
             </form>
           </div>
         </div>
 
-        {/* WhatsApp Buttons */}
-        <div className="text-center mt-5">
-          <h4 className="mb-3" style={{ color: '#003366' }}>Need Help Fast?</h4>
-          <a
-            href="https://wa.me/919999999999?text=Hi%20I%20would%20like%20to%20get%20more%20information."
-            className="btn btn-success me-2 mb-2"
-            style={{ padding: '10px 25px', fontSize: '16px' }}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+        {/* WhatsApp & Call */}
+        <div className="text-center mt-5 animate__animated animate__fadeInUp">
+          <h4 className="mb-3 text-primary">Need Help Fast?</h4>
+          <a href="https://wa.me/919999999999" className="btn btn-success me-2 mb-2" target="_blank" rel="noopener noreferrer">
             💬 Chat on WhatsApp
           </a>
-          <a
-            href="tel:+919999999999"
-            className="btn btn-outline-success mb-2"
-            style={{ padding: '10px 25px', fontSize: '16px' }}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="tel:+919999999999" className="btn btn-outline-success mb-2" target="_blank" rel="noopener noreferrer">
             📞 Call Our Team
           </a>
         </div>
@@ -170,31 +345,43 @@ const handleSubmit = async (e) => {
         </div>
       </div>
 
+      {/* Toast Notification */}
+      <div className="position-fixed bottom-0 end-0 p-3" style={{ zIndex: 11 }}>
+        <div ref={toastRef} className="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+          <div className="d-flex">
+            <div className="toast-body">
+              ✅ Your message was sent successfully!
+            </div>
+            <button type="button" className="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+        </div>
+      </div>
+
       {/* Footer */}
-      <footer className="bg-dark text-white pt-5 pb-3 mt-5">
+      <footer className="bg-primary text-white pt-4 pb-3 mt-auto">
         <div className="container">
           <div className="row">
-            <div className="col-md-4 mb-4">
+            <div className="col-md-4 mb-3">
               <h5>OrthoCare Kalyan</h5>
-              <p>Your trusted partner in orthopedic care. We provide top-notch services for bone and joint health.</p>
+              <p>We provide specialized orthopedic care, including bone and joint treatments, physical therapy, and expert consultations.</p>
             </div>
-            <div className="col-md-4 mb-4">
+            <div className="col-md-4 mb-3">
               <h5>Quick Links</h5>
               <ul className="list-unstyled">
                 <li><Link className="text-white text-decoration-none" to="/">Home</Link></li>
                 <li><Link className="text-white text-decoration-none" to="/blog">Blog</Link></li>
-                <li><Link className="text-white text-decoration-none" to="/contact">Contact Us</Link></li>
+                <li><Link className="text-white text-decoration-none" to="/contact">Contact</Link></li>
               </ul>
             </div>
-            <div className="col-md-4 mb-4">
-              <h5>Contact</h5>
+            <div className="col-md-4 mb-3">
+              <h5>Contact Us</h5>
               <p>123 Ortho Street, Kalyan, MH</p>
               <p>Email: care@orthocarekalyan.com</p>
               <p>Phone: +91 99999 99999</p>
             </div>
           </div>
-          <hr className="border-top border-light" />
-          <p className="text-center mb-0">&copy; {new Date().getFullYear()} OrthoCare Kalyan. All rights reserved.</p>
+          <hr className="border-light" />
+          <p className="text-center mb-0">&copy; {new Date().getFullYear()} OrthoCare Kalyan</p>
         </div>
       </footer>
     </div>
