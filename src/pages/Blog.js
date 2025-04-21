@@ -197,7 +197,7 @@ const Blog = () => {
             id: 1,
             title: '5 Tips to Keep Your Bones Strong',
             excerpt: 'A healthy diet and lifestyle are key to strong bones...',
-            content: 'Bone health is crucial for overall well-being. Eating a balanced diet rich in calcium and vitamin D, exercising regularly, and maintaining a healthy weight can help keep your bones strong and reduce the risk of fractures. Regular check-ups with an orthopedic specialist can help catch any underlying issues early, preventing long-term damage. Additionally, staying active and avoiding sedentary lifestyles can help improve bone density and flexibility.',
+            content: 'Bone health is crucial for overall well-being. Eating a balanced diet rich in calcium and vitamin D, exercising regularly, and maintaining a healthy weight can help keep your bones strong and reduce the risk of fractures.',
             publishedDate: '2023-12-10',
             image: '/images/strong.jpg',
         },
@@ -205,7 +205,7 @@ const Blog = () => {
             id: 2,
             title: 'When Should You See an Orthopedic Specialist?',
             excerpt: 'Learn the signs that indicate you need to visit an orthopedic doctor...',
-            content: 'If you’re experiencing persistent pain, swelling, or discomfort in your joints, bones, or muscles, it may be time to see an orthopedic specialist. This blog helps you identify when a visit is necessary and what to expect. Early intervention can often prevent small issues from becoming more serious, leading to faster recovery and fewer complications. Don’t wait until the pain becomes unbearable—your health is worth the attention.',
+            content: 'If you’re experiencing persistent pain, swelling, or discomfort in your joints, bones, or muscles, it may be time to see an orthopedic specialist. This blog helps you identify when a visit is necessary and what to expect.',
             publishedDate: '2023-12-15',
             image: '/images/orthodoc.jpg',
         },
@@ -213,7 +213,7 @@ const Blog = () => {
             id: 3,
             title: 'The Importance of Joint Care for Seniors',
             excerpt: 'Joint health is especially important for seniors to maintain independence...',
-            content: 'As we age, joints become more prone to wear and tear. Maintaining flexibility, strength, and stability is essential to reduce discomfort and increase mobility. For seniors, incorporating low-impact exercises such as swimming or walking can help maintain joint function. Additionally, joint care includes managing pain and inflammation with the help of your orthopedic specialist. Proper treatment can help you stay independent and active for longer.',
+            content: 'As we age, joints become more prone to wear and tear. Maintaining flexibility, strength, and stability is essential to reduce discomfort and increase mobility.',
             publishedDate: '2024-01-05',
             image: '/images/senior.jpg',
         },
@@ -221,7 +221,7 @@ const Blog = () => {
             id: 4,
             title: 'Common Orthopedic Injuries and How to Prevent Them',
             excerpt: 'Learn about common orthopedic injuries and ways to prevent them...',
-            content: 'Injuries such as sprains, fractures, and dislocations are common in sports and daily activities. Proper warm-up, using the right techniques, and strengthening muscles can help prevent these injuries. It’s also essential to wear the proper gear during physical activities and sports. Recovery time is crucial, and allowing your body to heal before jumping back into activities can help avoid further injuries.',
+            content: 'Injuries such as sprains, fractures, and dislocations are common in sports and daily activities. Proper warm-up, using the right techniques, and strengthening muscles can help prevent these injuries.',
             publishedDate: '2024-02-01',
             image: '/images/cure.png',
         },
@@ -229,7 +229,7 @@ const Blog = () => {
             id: 5,
             title: 'How Physical Therapy Can Help with Recovery',
             excerpt: 'Physical therapy is an essential part of orthopedic recovery...',
-            content: 'Physical therapy plays a key role in helping patients recover from orthopedic surgeries and injuries. It helps restore movement, reduce pain, and improve strength. Therapists develop personalized recovery programs based on the patient’s needs, helping them regain full function and mobility. Whether recovering from surgery or managing chronic pain, physical therapy provides support throughout the recovery journey.',
+            content: 'Physical therapy plays a key role in helping patients recover from orthopedic surgeries and injuries. It helps restore movement, reduce pain, and improve strength.',
             publishedDate: '2024-03-10',
             image: '/images/therapy.jpg',
         },
@@ -247,7 +247,7 @@ const Blog = () => {
     const closeModal = () => setSelectedBlog(null);
 
     return (
-        <div style={{ backgroundColor: '#f0f4f8', minHeight: '100vh' }}>
+        <div style={{ backgroundColor: '#f0f4f8', minHeight: '100vh', transition: 'background-color 0.3s ease' }}>
             <Helmet>
                 <title>Orthopedic Blog | OrthoCare Kalyan</title>
                 <meta name="description" content="Latest blog posts about orthopedic health, joint care, bone strength, and recovery tips from the experts at OrthoCare Kalyan." />
@@ -271,9 +271,15 @@ const Blog = () => {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav ms-auto">
-                            <li className="nav-item"><Link className="nav-link" to="/">Home</Link></li>
-                            <li className="nav-item"><Link className="nav-link active" to="/blog">Blog</Link></li>
-                            <li className="nav-item"><Link className="nav-link" to="/contact">Contact Us</Link></li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/">Home</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link active" to="/blog">Blog</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/contact">Contact Us</Link>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -289,12 +295,12 @@ const Blog = () => {
                 <div className="row">
                     {blogs.map(blog => (
                         <div className="col-md-4 mb-4" key={blog.id}>
-                            <div className="card h-100 shadow-lg border-0 hover-shadow-lg" style={{ borderRadius: '12px', transition: 'transform 0.3s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}>
-                                <img src={blog.image} className="card-img-top" alt={blog.title} style={{ height: '200px', objectFit: 'cover', borderTopLeftRadius: '12px', borderTopRightRadius: '12px' }} />
+                            <div className="card h-100 shadow-lg border-0 transition-transform" style={{ borderRadius: '12px', transition: 'transform 0.3s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}>
+                                <img src={blog.image} className="card-img-top" alt={blog.title} style={{ height: '200px', objectFit: 'cover', borderTopLeftRadius: '12px', borderTopRightRadius: '12px', transition: 'opacity 0.3s ease' }} />
                                 <div className="card-body">
                                     <h5 className="card-title" style={{ color: '#003366' }}>{blog.title}</h5>
                                     <p className="card-text text-muted">{blog.excerpt}</p>
-                                    <button className="btn btn-primary" onClick={() => openModal(blog)}>Read More</button>
+                                    <button className="btn btn-primary" onClick={() => openModal(blog)} style={{ transition: 'transform 0.2s ease' }}>Read More</button>
                                 </div>
                             </div>
                         </div>
@@ -312,18 +318,19 @@ const Blog = () => {
             {/* Modal */}
             {selectedBlog && (
                 <>
-                    <div className="modal fade show d-block" tabIndex="-1" role="dialog">
+                    <div className="modal fade show d-block" tabIndex="-1" role="dialog" style={{ transition: 'opacity 0.3s ease' }}>
                         <div className="modal-dialog modal-dialog-centered" role="document">
-                            <div className="modal-content shadow-lg" style={{ borderRadius: '15px' }}>
+                            <div className="modal-content shadow-lg" style={{ borderRadius: '15px', transition: 'transform 0.3s ease' }}>
                                 <div className="modal-header" style={{ backgroundColor: '#003366', color: '#fff' }}>
                                     <h5 className="modal-title">{selectedBlog.title}</h5>
                                     <button type="button" className="btn-close btn-close-white" onClick={closeModal}></button>
                                 </div>
                                 <div className="modal-body">
-                                    <img src={selectedBlog.image} className="img-fluid rounded mb-3" alt={selectedBlog.title} />
+                                    <div className="text-center mb-3">
+                                        <img src={selectedBlog.image} className="img-fluid rounded" alt={selectedBlog.title} style={{ maxHeight: '400px', objectFit: 'cover', borderRadius: '15px', transition: 'transform 0.3s ease' }} />
+                                    </div>
                                     <p><strong>Published:</strong> {selectedBlog.publishedDate}</p>
                                     <p>{selectedBlog.content}</p>
-                                    <p><strong>Note:</strong> Don't ignore the importance of joint and bone health—it plays a vital role in your overall well-being.</p>
                                 </div>
                                 <div className="modal-footer">
                                     <button className="btn btn-secondary" onClick={closeModal}>Close</button>
@@ -331,7 +338,7 @@ const Blog = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="modal-backdrop fade show"></div>
+                    <div className="modal-backdrop fade show" style={{ transition: 'opacity 0.3s ease' }}></div>
                 </>
             )}
 
