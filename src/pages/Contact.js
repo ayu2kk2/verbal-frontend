@@ -250,7 +250,7 @@ const Contact = () => {
   };
 
   return (
-    <div style={{ backgroundColor: '#f0f4f8', minHeight: '100vh' }}>
+    <div style={{ backgroundColor: '#f0f4f8' }}>
       {/* Navbar */}
       <nav className="navbar navbar-expand-lg navbar-dark py-3 shadow-sm" style={{ backgroundColor: '#003366' }}>
         <div className="container">
@@ -276,34 +276,20 @@ const Contact = () => {
         </div>
       </nav>
 
-      {/* Header Image */}
-      <div className="container-fluid p-0">
-        <div style={{ width: '100%', height: '300px', overflow: 'hidden' }}>
-          <img
-            src="/images/contact.jpg"
-            alt="Contact Us"
-            className="w-100 h-100"
-            style={{ objectFit: 'cover', objectPosition: 'center' }}
-          />
-        </div>
-      </div>
-
-      {/* Contact Form & Info */}
+      {/* Contact Section */}
       <div className="container py-5">
-        <h2 className="text-center mb-5 fw-bold" style={{ color: '#003366' }}>Get in Touch with Us</h2>
+        <h2 className="text-center fw-bold mb-5" style={{ color: '#003366' }}>Get in Touch with Us</h2>
 
-        <div className="row g-4 align-items-start">
-          {/* Left: Image + Info */}
-          <div className="col-lg-6">
-            <div className="mb-3">
-              <img
-                src="/images/hospital.jpg"
-                alt="Clinic Front"
-                className="img-fluid rounded shadow-sm"
-                style={{ maxHeight: '350px', objectFit: 'cover', width: '100%' }}
-              />
-            </div>
-            <div className="p-3 text-start small text-muted bg-light rounded shadow-sm border">
+        <div className="row g-4">
+          {/* Left: Image + Info Below */}
+          <div className="col-md-6">
+            <img
+              src="/images/hospital.jpg"
+              alt="Clinic"
+              className="img-fluid rounded shadow-sm mb-3"
+              style={{ width: '100%', maxHeight: '350px', objectFit: 'cover' }}
+            />
+            <div className="bg-light rounded p-3 shadow-sm small text-muted">
               <p>
                 At <strong>OrthoCare Kalyan</strong>, we are committed to providing the best orthopedic care tailored to your needs.
                 Whether you're recovering from surgery or managing a chronic condition, our expert team is here to help.
@@ -313,17 +299,17 @@ const Contact = () => {
                 We are located in the heart of Kalyan, and our clinic is equipped with state-of-the-art facilities to offer you the best treatment.
                 Feel free to fill out the contact form, and our team will reach out to you as soon as possible.
               </p>
-              <address className="mb-0">
+              <address>
                 <strong>OrthoCare Kalyan</strong><br />
-                123 Ortho Street, Kalyan, MH, 421301<br />
+                123 Ortho Street, Kalyan, MH 421301<br />
                 Phone: +91 99999 99999<br />
                 Email: <a href="mailto:care@orthocarekalyan.com" className="text-decoration-none">care@orthocarekalyan.com</a>
               </address>
             </div>
           </div>
 
-          {/* Right: Form */}
-          <div className="col-lg-6">
+          {/* Right: Contact Form */}
+          <div className="col-md-6">
             <form onSubmit={handleSubmit} className="bg-white p-4 shadow-sm rounded border">
               <div className="mb-3">
                 <label className="form-label">Name</label>
@@ -341,23 +327,20 @@ const Contact = () => {
                 <label className="form-label">Message</label>
                 <textarea name="message" className="form-control" rows="5" value={formData.message} onChange={handleChange} required />
               </div>
-              <button type="submit" className="btn btn-primary w-100" style={{ backgroundColor: '#003366', border: 'none' }}>
+              <button type="submit" className="btn btn-primary w-100" style={{ backgroundColor: '#003366' }}>
                 Send Message
               </button>
-              {statusMessage && (
-                <div className="alert alert-info text-center mt-3 mb-0">{statusMessage}</div>
-              )}
+              {statusMessage && <div className="alert alert-info mt-3 mb-0">{statusMessage}</div>}
             </form>
           </div>
         </div>
 
-        {/* WhatsApp + Call Buttons */}
+        {/* WhatsApp and Call buttons */}
         <div className="text-center mt-5">
-          <h4 className="mb-3" style={{ color: '#003366' }}>Need Help Fast?</h4>
+          <h4 style={{ color: '#003366' }}>Need Help Fast?</h4>
           <a
-            href="https://wa.me/919999999999?text=Hi%20I%20would%20like%20to%20get%20more%20information."
-            className="btn btn-success me-2 mb-2"
-            style={{ padding: '10px 25px', fontSize: '16px' }}
+            href="https://wa.me/919999999999"
+            className="btn btn-success me-2 mt-2"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -365,8 +348,7 @@ const Contact = () => {
           </a>
           <a
             href="tel:+919999999999"
-            className="btn btn-outline-success mb-2"
-            style={{ padding: '10px 25px', fontSize: '16px' }}
+            className="btn btn-outline-success mt-2"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -387,34 +369,6 @@ const Contact = () => {
           ></iframe>
         </div>
       </div>
-
-      {/* Footer */}
-      <footer className="bg-dark text-white pt-5 pb-3 mt-5">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-4 mb-4">
-              <h5>OrthoCare Kalyan</h5>
-              <p>Your trusted partner in orthopedic care. We provide top-notch services for bone and joint health.</p>
-            </div>
-            <div className="col-md-4 mb-4">
-              <h5>Quick Links</h5>
-              <ul className="list-unstyled">
-                <li><Link className="text-white text-decoration-none" to="/">Home</Link></li>
-                <li><Link className="text-white text-decoration-none" to="/blog">Blog</Link></li>
-                <li><Link className="text-white text-decoration-none" to="/contact">Contact Us</Link></li>
-              </ul>
-            </div>
-            <div className="col-md-4 mb-4">
-              <h5>Contact</h5>
-              <p>123 Ortho Street, Kalyan, MH</p>
-              <p>Email: care@orthocarekalyan.com</p>
-              <p>Phone: +91 99999 99999</p>
-            </div>
-          </div>
-          <hr className="border-top border-light" />
-          <p className="text-center mb-0">&copy; {new Date().getFullYear()} OrthoCare Kalyan. All rights reserved.</p>
-        </div>
-      </footer>
     </div>
   );
 };
