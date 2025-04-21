@@ -233,7 +233,7 @@ const Home = () => {
       </Helmet>
 
       {/* Navbar */}
-      <nav className="navbar navbar-expand-lg navbar-dark py-3 shadow-sm" style={{ backgroundColor: '#003366' }}>
+      <nav className="navbar navbar-expand-lg navbar-dark py-3 shadow-lg" style={{ backgroundColor: '#003366' }}>
         <div className="container">
           <Link className="navbar-brand d-flex align-items-center fw-bold" to="/">
             <img
@@ -251,37 +251,30 @@ const Home = () => {
             <ul className="navbar-nav ms-auto">
               <li className="nav-item"><Link className="nav-link active" to="/">Home</Link></li>
               <li className="nav-item"><Link className="nav-link" to="/blog">Blog</Link></li>
-              <li className="nav-item"><Link className="nav-link " to="/contact">Contact Us</Link></li>
+              <li className="nav-item"><Link className="nav-link" to="/contact">Contact Us</Link></li>
             </ul>
           </div>
         </div>
       </nav>
 
-      {/* Carousel with fade transition */}
+      {/* Carousel */}
       <div id="heroCarousel" className="carousel slide carousel-fade" data-bs-ride="carousel">
         <div className="carousel-inner" style={{ height: '500px', overflow: 'hidden' }}>
           {['slide1.jpg', 'slide2.jpg', 'slide3.jpg'].map((img, idx) => (
             <div
               key={img}
               className={`carousel-item ${idx === 0 ? 'active' : ''}`}
+              data-bs-interval="4000"
               style={{ height: '100%' }}
             >
               <img
                 src={`/images/${img}`}
                 className="d-block w-100"
                 alt={`Slide ${idx + 1}`}
-                style={{ height: '100%', objectFit: 'cover' }}
+                style={{ height: '100%', objectFit: 'cover', filter: 'brightness(80%)' }}
               />
-              <div
-                className="carousel-caption d-none d-md-block"
-                style={{
-                  bottom: '40px',
-                  background: 'rgba(0, 0, 0, 0.5)',
-                  padding: '20px',
-                  borderRadius: '10px',
-                }}
-              >
-                <h3 className="text-white">Expert Orthopedic Care</h3>
+              <div className="carousel-caption d-none d-md-block animate__animated animate__fadeInUp">
+                <h3 className="text-white fw-bold">Expert Orthopedic Care</h3>
                 <p className="text-light mb-0">Your bone health is our priority</p>
               </div>
             </div>
@@ -298,22 +291,22 @@ const Home = () => {
       </div>
 
       {/* Welcome Section */}
-      <section className="py-5 bg-white fade show">
+      <section className="py-5 bg-white animate__animated animate__fadeIn">
         <div className="container text-center">
-          <h2 className="fw-bold" style={{ color: '#003366' }}>Welcome to OrthoCare</h2>
-          <p className="lead">Trusted orthopedic specialists dedicated to your health, mobility, and comfort.</p>
+          <h2 className="fw-bold text-primary">Welcome to OrthoCare</h2>
+          <p className="lead text-secondary">Trusted orthopedic specialists dedicated to your health, mobility, and comfort.</p>
         </div>
       </section>
 
       {/* Facilities */}
-      <section className="py-5 bg-light fade show">
+      <section className="py-5 bg-light animate__animated animate__fadeInUp">
         <div className="container">
           <div className="row align-items-center">
             <div className="col-md-6 mb-2">
-              <img src="/images/facility.jpg" alt="Our Facility" className="img-fluid rounded shadow-sm" />
+              <img src="/images/facility.jpg" alt="Our Facility" className="img-fluid rounded shadow-lg" />
             </div>
             <div className="col-md-6">
-              <h3 style={{ color: '#003366' }}>Modern Facilities & Technology</h3>
+              <h3 className="text-primary">Modern Facilities & Technology</h3>
               <p>Our clinic is equipped with state-of-the-art technology to ensure accurate diagnosis and effective treatment.</p>
               <p>We offer a wide range of orthopedic services including joint replacement, physiotherapy, sports injury management, and more.</p>
             </div>
@@ -322,8 +315,8 @@ const Home = () => {
       </section>
 
       {/* Meet the Doctors */}
-      <section className="container py-5">
-        <h2 className="text-center mb-5" style={{ color: '#003366', fontWeight: '700' }}>Meet Our Specialists</h2>
+      <section className="container py-5 animate__animated animate__fadeInUp">
+        <h2 className="text-center mb-5 text-primary fw-bold">Meet Our Specialists</h2>
         <div className="row">
           {doctors.map(doctor => (
             <div className="col-md-4 mb-4" key={doctor._id}>
@@ -338,8 +331,8 @@ const Home = () => {
         <>
           <div className="modal fade show d-block" tabIndex="-1" role="dialog">
             <div className="modal-dialog modal-dialog-centered" role="document">
-              <div className="modal-content shadow">
-                <div className="modal-header" style={{ backgroundColor: '#003366', color: '#fff' }}>
+              <div className="modal-content shadow-lg animate__animated animate__fadeInDown">
+                <div className="modal-header bg-primary text-white">
                   <h5 className="modal-title">{selectedDoctor.name}</h5>
                   <button type="button" className="btn-close btn-close-white" onClick={closeModal}></button>
                 </div>
