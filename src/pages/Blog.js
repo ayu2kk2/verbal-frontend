@@ -205,7 +205,7 @@ const Blog = () => {
             id: 2,
             title: 'When Should You See an Orthopedic Specialist?',
             excerpt: 'Learn the signs that indicate you need to visit an orthopedic doctor...',
-            content: 'If you’re experiencing persistent pain, swelling, or discomfort in your joints, bones, or muscles, it may be time to see an orthopedic specialist. This blog helps you identify when a visit is necessary and what to expect. Early intervention can often prevent small issues from becoming more serious, leading to faster recovery and fewer complications. Don't wait until the pain becomes unbearable—your health is worth the attention.',
+            content: 'If you’re experiencing persistent pain, swelling, or discomfort in your joints, bones, or muscles, it may be time to see an orthopedic specialist. This blog helps you identify when a visit is necessary and what to expect. Early intervention can often prevent small issues from becoming more serious, leading to faster recovery and fewer complications. Don’t wait until the pain becomes unbearable—your health is worth the attention.',
             publishedDate: '2023-12-15',
             image: '/images/orthodoc.jpg',
         },
@@ -217,14 +217,37 @@ const Blog = () => {
             publishedDate: '2024-01-05',
             image: '/images/senior.jpg',
         },
-        // Add other blog entries here...
+        {
+            id: 4,
+            title: 'Common Orthopedic Injuries and How to Prevent Them',
+            excerpt: 'Learn about common orthopedic injuries and ways to prevent them...',
+            content: 'Injuries such as sprains, fractures, and dislocations are common in sports and daily activities. Proper warm-up, using the right techniques, and strengthening muscles can help prevent these injuries. It’s also essential to wear the proper gear during physical activities and sports. Recovery time is crucial, and allowing your body to heal before jumping back into activities can help avoid further injuries.',
+            publishedDate: '2024-02-01',
+            image: '/images/cure.png',
+        },
+        {
+            id: 5,
+            title: 'How Physical Therapy Can Help with Recovery',
+            excerpt: 'Physical therapy is an essential part of orthopedic recovery...',
+            content: 'Physical therapy plays a key role in helping patients recover from orthopedic surgeries and injuries. It helps restore movement, reduce pain, and improve strength. Therapists develop personalized recovery programs based on the patient’s needs, helping them regain full function and mobility. Whether recovering from surgery or managing chronic pain, physical therapy provides support throughout the recovery journey.',
+            publishedDate: '2024-03-10',
+            image: '/images/therapy.jpg',
+        },
+        {
+            id: 6,
+            title: 'Why Ignoring Joint Pain Can Be Risky',
+            excerpt: 'Ignoring joint pain can lead to long-term damage—early care makes all the difference.',
+            content: `Joint pain might seem like a minor inconvenience at first, but ignoring it can lead to more serious issues like arthritis or long-term mobility problems. Pain is your body’s way of saying something’s wrong. If it doesn’t go away with rest or keeps coming back, it’s time to consult an orthopedic specialist. Early treatment can prevent damage and keep you active and pain-free. Don’t wait until the pain gets worse. Your joints deserve attention now.`,
+            publishedDate: '2024-3-11',
+            image: '/images/ignore.png',
+        }
     ];
 
     const openModal = (blog) => setSelectedBlog(blog);
     const closeModal = () => setSelectedBlog(null);
 
     return (
-        <div style={{ backgroundColor: '#f8f9fc', minHeight: '100vh' }}>
+        <div style={{ backgroundColor: '#f0f4f8', minHeight: '100vh' }}>
             <Helmet>
                 <title>Orthopedic Blog | OrthoCare Kalyan</title>
                 <meta name="description" content="Latest blog posts about orthopedic health, joint care, bone strength, and recovery tips from the experts at OrthoCare Kalyan." />
@@ -300,7 +323,7 @@ const Blog = () => {
                                     <img src={selectedBlog.image} className="img-fluid rounded mb-3" alt={selectedBlog.title} />
                                     <p><strong>Published:</strong> {selectedBlog.publishedDate}</p>
                                     <p>{selectedBlog.content}</p>
-                                    <p><strong>Note:</strong> Don’t ignore bone health—it’s crucial for a happy, healthy life!</p>
+                                    <p><strong>Note:</strong> Don't ignore the importance of joint and bone health—it plays a vital role in your overall well-being.</p>
                                 </div>
                                 <div className="modal-footer">
                                     <button className="btn btn-secondary" onClick={closeModal}>Close</button>
