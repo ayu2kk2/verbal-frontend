@@ -278,32 +278,33 @@ const Contact = () => {
 
       {/* Contact Section */}
       <div className="container py-5">
-        <h2 className="text-center fw-bold mb-5" style={{ color: '#003366' }}>Get in Touch with Us</h2>
+        <h2 className="text-center fw-bold" style={{ color: '#003366' }}>Get in Touch with Us</h2>
+        <p className="text-center text-muted mb-5" style={{ fontSize: '15px' }}>
+          We're here to answer your questions and provide the support you need.
+        </p>
 
-        <div className="row g-4">
+        <div className="row g-4 align-items-start">
           {/* Left: Image + Info Below */}
           <div className="col-md-6">
             <img
               src="/images/hospital.jpg"
               alt="Clinic"
               className="img-fluid rounded shadow-sm mb-3"
-              style={{ width: '100%', maxHeight: '350px', objectFit: 'cover' }}
+              style={{ width: '100%', maxHeight: '340px', objectFit: 'cover' }}
             />
             <div className="bg-light rounded p-3 shadow-sm small text-muted">
               <p>
-                At <strong>OrthoCare Kalyan</strong>, we are committed to providing the best orthopedic care tailored to your needs.
-                Whether you're recovering from surgery or managing a chronic condition, our expert team is here to help.
-                Contact us today to discuss your concerns and begin your journey toward better health.
+                At <strong>OrthoCare Kalyan</strong>, we’re dedicated to your orthopedic health. From consultations to advanced treatment, our expert team ensures personalized care every step of the way.
               </p>
               <p>
-                We are located in the heart of Kalyan, and our clinic is equipped with state-of-the-art facilities to offer you the best treatment.
-                Feel free to fill out the contact form, and our team will reach out to you as soon as possible.
+                Conveniently located in the heart of Kalyan, our clinic is equipped with modern facilities to support your recovery.
               </p>
-              <address>
-                <strong>OrthoCare Kalyan</strong><br />
+              <address className="mb-0">
+                <strong>Address:</strong><br />
                 123 Ortho Street, Kalyan, MH 421301<br />
-                Phone: +91 99999 99999<br />
-                Email: <a href="mailto:care@orthocarekalyan.com" className="text-decoration-none">care@orthocarekalyan.com</a>
+                <strong>Phone:</strong> +91 99999 99999<br />
+                <strong>Email:</strong>{' '}
+                <a href="mailto:care@orthocarekalyan.com" className="text-decoration-none">care@orthocarekalyan.com</a>
               </address>
             </div>
           </div>
