@@ -205,7 +205,7 @@
 
 
 import React, { useState } from 'react';
-import emailjs from '@emailjs/browser'; 
+import emailjs from '@emailjs/browser';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -222,7 +222,6 @@ const Contact = () => {
     e.preventDefault();
 
     try {
-      // Send Email via EmailJS
       await emailjs.send(
         'service_7yxiu7e',
         'template_8li5g7c',
@@ -230,7 +229,6 @@ const Contact = () => {
         'iO8QiaZje2w5HZ4Lu'
       );
 
-      // Saving to MongoDB through backend
       const response = await fetch(`${API}/api/contact`, {
         method: 'POST',
         headers: {
@@ -240,8 +238,6 @@ const Contact = () => {
       });
 
       const data = await response.json();
-      console.log('Backend response:', data);
-
       if (!response.ok) {
         throw new Error(data.message || 'Failed to save to DB');
       }
@@ -250,13 +246,13 @@ const Contact = () => {
       setFormData({ name: '', email: '', phone: '', message: '' });
 
     } catch (error) {
-      console.error('Submission error:', error); // we can see error details here
+      console.error('Submission error:', error);
       setStatusMessage('Failed to send message. Try again later.');
     }
   };
 
   return (
-    <div style={{ backgroundColor: '#f0f4f8', minHeight: '100vh' }}>
+    <div style={{ backgroundColor: '#f0f4f8' }}>
       {/* Navbar */}
       <nav className="navbar navbar-expand-lg navbar-dark py-3 shadow-sm" style={{ backgroundColor: '#003366' }}>
         <div className="container">
@@ -294,92 +290,89 @@ const Contact = () => {
         </div>
       </div>
 
-      {/* Contact Form */}
+      {/* Contact Section */}
       <div className="container py-5">
-        <h2 className="text-center mb-5 fw-bold" style={{ color: '#003366' }}>Get in Touch with Us</h2>
-        <p className="text-center mb-5" style={{ color: '#003366', fontSize: '18px' }}>
-          We are here to assist you. Please fill out the form and we'll get back to you as soon as possible.
+        <h2 className="text-center fw-bold" style={{ color: '#003366' }}>Get in Touch with Us</h2>
+        <p className="text-center text-muted mb-5" style={{ fontSize: '15px' }}>
+          Let’s connect and find the best solution for your orthopedic needs.
         </p>
 
-        <div className="row align-items-center g-4">
-          {/* Left Side: Image and Info */}
-          <div className="col-lg-6 d-flex flex-column align-items-center">
-            <img
-              src="/images/hospital.jpg"
-              alt="Clinic Front"
-              className="img-fluid rounded shadow mb-3"
-              style={{ maxHeight: '400px', objectFit: 'cover', width: '100%' }}
-            />
-            <p className="text-center" style={{ fontSize: '16px', color: '#003366' }}>
-              At OrthoCare Kalyan, we are committed to providing the best orthopedic care tailored to your needs.
-              Whether you're recovering from surgery or managing a chronic condition, our expert team is here to help.
-              Contact us today to discuss your concerns and begin your journey toward better health.
-            </p>
+        <div className="row g-4 align-items-stretch">
+          {/* Left Box */}
+          <div className="col-md-6 d-flex">
+            <div className="bg-white rounded shadow-sm p-3 w-100 d-flex flex-column justify-content-between">
+              <div className="overflow-hidden rounded" style={{ height: '260px' }}>
+                <img
+                  src="/images/hospital.jpg"
+                  alt="Clinic"
+                  className="img-fluid w-100 h-100 rounded shadow-sm"
+                  style={{
+                    objectFit: 'cover',
+                    transition: 'transform 0.4s ease',
+                    cursor: 'pointer'
+                  }}
+                  onMouseOver={e => e.currentTarget.style.transform = 'scale(1.05)'}
+                  onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}
+                />
+              </div>
+              <div className="mt-3">
+                <p className="small text-muted mb-2">
+                  At <strong>OrthoCare Kalyan</strong>, we deliver compassionate and expert orthopedic care in the heart of Kalyan.
+                </p>
+                <p className="small text-muted mb-0">
+                  Use the form to connect with us — we're here to help you move better.
+                </p>
+              </div>
+            </div>
           </div>
 
-          {/* Right Side: Contact Form */}
-          <div className="col-lg-6">
-            <form onSubmit={handleSubmit} className="bg-white p-4 shadow rounded">
-              <div className="mb-3">
-                <label className="form-label">Name</label>
-                <input type="text" name="name" className="form-control" value={formData.name} onChange={handleChange} required />
+          {/* Right Box */}
+          <div className="col-md-6 d-flex">
+            <form onSubmit={handleSubmit} className="bg-white p-4 shadow rounded w-100 d-flex flex-column justify-content-between">
+              <div>
+                <div className="mb-3">
+                  <label className="form-label">Name</label>
+                  <input type="text" name="name" className="form-control" value={formData.name} onChange={handleChange} required />
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Email</label>
+                  <input type="email" name="email" className="form-control" value={formData.email} onChange={handleChange} required />
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Phone</label>
+                  <input type="text" name="phone" className="form-control" value={formData.phone} onChange={handleChange} />
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Message</label>
+                  <textarea name="message" className="form-control" rows="4" value={formData.message} onChange={handleChange} required />
+                </div>
               </div>
-              <div className="mb-3">
-                <label className="form-label">Email</label>
-                <input type="email" name="email" className="form-control" value={formData.email} onChange={handleChange} required />
+              <div>
+                <button
+                  type="submit"
+                  className="btn btn-primary w-100"
+                  style={{
+                    backgroundColor: '#003366',
+                    border: 'none',
+                    transition: 'all 0.3s ease',
+                  }}
+                  onMouseOver={(e) => {
+                    e.target.style.transform = 'scale(1.03)';
+                    e.target.style.boxShadow = '0 0 10px rgba(0,0,0,0.2)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.target.style.transform = 'scale(1)';
+                    e.target.style.boxShadow = 'none';
+                  }}
+                >
+                  Send Message
+                </button>
+                {statusMessage && (
+                  <div className="alert alert-info text-center mt-3 mb-0">{statusMessage}</div>
+                )}
               </div>
-              <div className="mb-3">
-                <label className="form-label">Phone</label>
-                <input type="text" name="phone" className="form-control" value={formData.phone} onChange={handleChange} />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Message</label>
-                <textarea name="message" className="form-control" rows="5" value={formData.message} onChange={handleChange} required />
-              </div>
-              <button type="submit" className="btn btn-primary w-100" style={{ backgroundColor: '#003366', border: 'none' }}>
-                Send Message
-              </button>
-              {statusMessage && (
-                <div className="alert alert-info text-center mt-3 mb-0">{statusMessage}</div>
-              )}
             </form>
           </div>
-        </div>
-
-        {/* WhatsApp Buttons */}
-        <div className="text-center mt-5">
-          <h4 className="mb-3" style={{ color: '#003366' }}>Need Help Fast?</h4>
-          <a
-            href="https://wa.me/919999999999?text=Hi%20I%20would%20like%20to%20get%20more%20information."
-            className="btn btn-success me-2 mb-2"
-            style={{ padding: '10px 25px', fontSize: '16px' }}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            💬 Chat on WhatsApp
-          </a>
-          <a
-            href="tel:+919999999999"
-            className="btn btn-outline-success mb-2"
-            style={{ padding: '10px 25px', fontSize: '16px' }}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            📞 Call Our Team
-          </a>
-        </div>
-
-        {/* Google Map */}
-        <div className="mt-5 shadow rounded overflow-hidden">
-          <iframe
-            title="clinic-location"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.1160983873!2d72.74109983902492!3d19.207681931152422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be796b7f6e44e3f%3A0xe9536ad86bb3e50e!2sKalyan%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1615995970585!5m2!1sen!2sin"
-            width="100%"
-            height="300"
-            style={{ border: 0, borderRadius: '8px' }}
-            allowFullScreen=""
-            loading="lazy"
-          ></iframe>
         </div>
       </div>
 
