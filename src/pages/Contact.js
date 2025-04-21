@@ -280,59 +280,63 @@ const Contact = () => {
       <div className="container py-5">
         <h2 className="text-center fw-bold" style={{ color: '#003366' }}>Get in Touch with Us</h2>
         <p className="text-center text-muted mb-5" style={{ fontSize: '15px' }}>
-          We're here to answer your questions and provide the support you need.
+          Let’s connect and find the best solution for your orthopedic needs.
         </p>
 
-        <div className="row g-4 align-items-start">
-          {/* Left: Image + Info Below */}
+        <div className="row g-4">
+          {/* Left Side */}
           <div className="col-md-6">
-            <img
-              src="/images/hospital.jpg"
-              alt="Clinic"
-              className="img-fluid rounded shadow-sm mb-3"
-              style={{ width: '100%', maxHeight: '340px', objectFit: 'cover' }}
-            />
-            <div className="bg-light rounded p-3 shadow-sm small text-muted">
-              <p>
-                At <strong>OrthoCare Kalyan</strong>, we’re dedicated to your orthopedic health. From consultations to advanced treatment, our expert team ensures personalized care every step of the way.
-              </p>
-              <p>
-                Conveniently located in the heart of Kalyan, our clinic is equipped with modern facilities to support your recovery.
-              </p>
-              <address className="mb-0">
-                <strong>Address:</strong><br />
-                123 Ortho Street, Kalyan, MH 421301<br />
-                <strong>Phone:</strong> +91 99999 99999<br />
-                <strong>Email:</strong>{' '}
-                <a href="mailto:care@orthocarekalyan.com" className="text-decoration-none">care@orthocarekalyan.com</a>
-              </address>
+            <div className="bg-white rounded shadow-sm h-100 d-flex flex-column p-3">
+              <img
+                src="/images/hospital.jpg"
+                alt="Clinic"
+                className="img-fluid rounded shadow-sm mb-3"
+                style={{ width: '100%', maxHeight: '260px', objectFit: 'cover' }}
+              />
+              <div className="small text-muted">
+                <p>
+                  At <strong>OrthoCare Kalyan</strong>, we’re dedicated to your orthopedic health. Our experienced team ensures you receive care that’s personal, effective, and modern.
+                </p>
+                <p>
+                  Conveniently located in central Kalyan, our clinic is equipped with the latest technology to support your recovery journey.
+                </p>
+                <address className="mb-0">
+                  <strong>Address:</strong><br />
+                  123 Ortho Street, Kalyan, MH 421301<br />
+                  <strong>Phone:</strong> +91 99999 99999<br />
+                  <strong>Email:</strong>{' '}
+                  <a href="mailto:care@orthocarekalyan.com" className="text-decoration-none">care@orthocarekalyan.com</a>
+                </address>
+              </div>
             </div>
           </div>
 
-          {/* Right: Contact Form */}
+          {/* Right Side */}
           <div className="col-md-6">
-            <form onSubmit={handleSubmit} className="bg-white p-4 shadow-sm rounded border">
-              <div className="mb-3">
-                <label className="form-label">Name</label>
-                <input type="text" name="name" className="form-control" value={formData.name} onChange={handleChange} required />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Email</label>
-                <input type="email" name="email" className="form-control" value={formData.email} onChange={handleChange} required />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Phone</label>
-                <input type="text" name="phone" className="form-control" value={formData.phone} onChange={handleChange} />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Message</label>
-                <textarea name="message" className="form-control" rows="5" value={formData.message} onChange={handleChange} required />
-              </div>
-              <button type="submit" className="btn btn-primary w-100" style={{ backgroundColor: '#003366' }}>
-                Send Message
-              </button>
-              {statusMessage && <div className="alert alert-info mt-3 mb-0">{statusMessage}</div>}
-            </form>
+            <div className="bg-white p-4 rounded shadow-sm h-100">
+              <form onSubmit={handleSubmit}>
+                <div className="mb-3">
+                  <label className="form-label">Name</label>
+                  <input type="text" name="name" className="form-control" value={formData.name} onChange={handleChange} required />
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Email</label>
+                  <input type="email" name="email" className="form-control" value={formData.email} onChange={handleChange} required />
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Phone</label>
+                  <input type="text" name="phone" className="form-control" value={formData.phone} onChange={handleChange} />
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Message</label>
+                  <textarea name="message" className="form-control" rows="4" value={formData.message} onChange={handleChange} required />
+                </div>
+                <button type="submit" className="btn btn-primary w-100" style={{ backgroundColor: '#003366' }}>
+                  Send Message
+                </button>
+                {statusMessage && <div className="alert alert-info mt-3 mb-0">{statusMessage}</div>}
+              </form>
+            </div>
           </div>
         </div>
 
