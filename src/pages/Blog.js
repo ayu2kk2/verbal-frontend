@@ -10,7 +10,7 @@ const Blog = () => {
             id: 1,
             title: '5 Tips to Keep Your Bones Strong',
             excerpt: 'A healthy diet and lifestyle are key to strong bones...',
-            content: 'Bone health is crucial for overall well-being. Eating a balanced diet rich in calcium and vitamin D, exercising regularly, and maintaining a healthy weight can help keep your bones strong and reduce the risk of fractures.',
+            content: 'Bone health is crucial for overall well-being. Eating a balanced diet rich in calcium and vitamin D can significantly improve bone density and prevent issues like osteoporosis. Include dairy, leafy greens, and fortified foods in your meals to get the nutrients your bones need.\n\nRegular exercise also plays a huge role in keeping your bones strong. Weight-bearing and resistance exercises, such as walking, running, or lifting weights, help stimulate bone formation and reduce bone loss as we age. Staying active even into your later years is key.\n\nAvoid habits that harm bone health, like smoking and excessive alcohol consumption. Getting regular checkups and bone density tests, especially after age 50, can help you take early action to maintain strong and healthy bones.',
             publishedDate: '2023-12-10',
             image: '/images/strong.jpg',
         },
@@ -18,7 +18,7 @@ const Blog = () => {
             id: 2,
             title: 'When Should You See an Orthopedic Specialist?',
             excerpt: 'Learn the signs that indicate you need to visit an orthopedic doctor...',
-            content: 'If you’re experiencing persistent pain, swelling, or discomfort in your joints, bones, or muscles, it may be time to see an orthopedic specialist. This blog helps you identify when a visit is necessary and what to expect.',
+            content: 'If you’re experiencing persistent joint, bone, or muscle pain, it could be a sign of an underlying orthopedic issue. Pain that doesn’t go away after rest, over-the-counter medication, or physical therapy deserves medical attention.\n\nSwelling, stiffness, or a decreased range of motion can also be signs that something is wrong. If these symptoms affect your ability to walk, work, or perform daily tasks, it’s best to see a specialist. Ignoring such issues could lead to long-term damage.\n\nAn orthopedic doctor can diagnose the cause of your symptoms and offer treatment options ranging from physical therapy to minimally invasive surgery. Early intervention often leads to quicker recovery and better outcomes.',
             publishedDate: '2023-12-15',
             image: '/images/orthodoc.jpg',
         },
@@ -26,7 +26,7 @@ const Blog = () => {
             id: 3,
             title: 'The Importance of Joint Care for Seniors',
             excerpt: 'Joint health is especially important for seniors to maintain independence...',
-            content: 'As we age, joints become more prone to wear and tear. Maintaining flexibility, strength, and stability is essential to reduce discomfort and increase mobility.',
+            content: 'As we age, the cartilage that cushions our joints tends to wear down, leading to discomfort, stiffness, and conditions like osteoarthritis. This makes joint care particularly important for seniors looking to maintain mobility and independence.\n\nSimple activities like walking, swimming, and stretching can help keep joints flexible and strong. Combining movement with a balanced diet rich in anti-inflammatory foods can support joint health and reduce pain.\n\nIt’s also important for seniors to avoid falls by using assistive devices when needed and keeping living spaces safe. Regular checkups with an orthopedic doctor can ensure that any joint issues are caught early and managed properly.',
             publishedDate: '2024-01-05',
             image: '/images/senior.jpg',
         },
@@ -34,7 +34,7 @@ const Blog = () => {
             id: 4,
             title: 'Common Orthopedic Injuries and How to Prevent Them',
             excerpt: 'Learn about common orthopedic injuries and ways to prevent them...',
-            content: 'Injuries such as sprains, fractures, and dislocations are common in sports and daily activities. Proper warm-up, using the right techniques, and strengthening muscles can help prevent these injuries.',
+            content: 'Orthopedic injuries like sprains, fractures, tendonitis, and dislocations are common, especially in active individuals or those with demanding physical jobs. These injuries can disrupt daily life and often take weeks or months to heal.\n\nTo prevent injuries, it’s important to warm up before exercise and use proper form during physical activity. Wearing the right footwear, staying hydrated, and incorporating rest days into your routine can also reduce your risk of injury.\n\nFor athletes or fitness enthusiasts, strength training and flexibility exercises are key to preventing overuse injuries. If you do get injured, seeking early orthopedic care can help you recover fully and avoid chronic problems.',
             publishedDate: '2024-02-01',
             image: '/images/cure.png',
         },
@@ -42,7 +42,7 @@ const Blog = () => {
             id: 5,
             title: 'How Physical Therapy Can Help with Recovery',
             excerpt: 'Physical therapy is an essential part of orthopedic recovery...',
-            content: 'Physical therapy plays a key role in helping patients recover from orthopedic surgeries and injuries. It helps restore movement, reduce pain, and improve strength.',
+            content: 'Physical therapy is a vital part of the recovery process after an orthopedic injury or surgery. It helps restore mobility, improve strength, and reduce pain through guided exercises and therapeutic techniques.\n\nTherapists design personalized treatment plans to target specific areas of weakness or stiffness. These plans often include stretches, strengthening routines, manual therapy, and even electrical stimulation to accelerate healing.\n\nConsistent therapy not only speeds up recovery but can also prevent future injuries by improving body mechanics and posture. For long-term results, patients are encouraged to follow home exercise programs and stay active under professional guidance.',
             publishedDate: '2024-03-10',
             image: '/images/therapy.jpg',
         },
@@ -50,11 +50,12 @@ const Blog = () => {
             id: 6,
             title: 'Why Ignoring Joint Pain Can Be Risky',
             excerpt: 'Ignoring joint pain can lead to long-term damage—early care makes all the difference.',
-            content: `Joint pain might seem like a minor inconvenience at first, but ignoring it can lead to more serious issues like arthritis or long-term mobility problems. Pain is your body’s way of saying something’s wrong. If it doesn’t go away with rest or keeps coming back, it’s time to consult an orthopedic specialist. Early treatment can prevent damage and keep you active and pain-free. Don’t wait until the pain gets worse. Your joints deserve attention now.`,
+            content: 'Joint pain might seem like a minor inconvenience at first, but it’s often a sign that something is wrong beneath the surface. Ignoring it can lead to chronic inflammation, reduced mobility, and conditions like arthritis that become harder to manage over time.\n\nMany people try to push through the pain or self-medicate, which can worsen the condition. Early consultation with an orthopedic specialist allows for accurate diagnosis and the chance to begin effective treatment while the problem is still manageable.\n\nTaking joint pain seriously ensures you maintain your quality of life. Whether it’s physical therapy, medication, or lifestyle adjustments, timely care can help you avoid surgery and keep you active and pain-free for years to come.',
             publishedDate: '2024-3-11',
             image: '/images/ignore.png',
         }
     ];
+    
 
     const openModal = (blog) => setSelectedBlog(blog);
     const closeModal = () => setSelectedBlog(null);

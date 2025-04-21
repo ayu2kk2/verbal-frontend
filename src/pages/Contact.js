@@ -9,7 +9,7 @@ const Contact = () => {
   const [callLogs, setCallLogs] = useState([]);
   const API = process.env.REACT_APP_API_URL;
 
-  // Fetching call logs from the backend API
+  // Fetching call logs from the backend 
   useEffect(() => {
     const fetchCallLogs = async () => {
       try {
@@ -34,7 +34,7 @@ const Contact = () => {
     e.preventDefault();
 
     try {
-      // Send Email via EmailJS
+      // Sending Email with EmailJS
       await emailjs.send(
         'service_7yxiu7e',
         'template_8li5g7c',
