@@ -448,9 +448,8 @@
 
 // export default Contact;
 
-
 import React, { useState, useEffect } from 'react';
-import emailjs from '@emailjs/browser'; 
+import emailjs from '@emailjs/browser';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -564,7 +563,7 @@ const Contact = () => {
           We are here to assist you. Please fill out the form and we'll get back to you as soon as possible.
         </p>
 
-        <div className="row align-items-start g-4">
+        <div className="row align-items-stretch g-4">
           {/* Left Side: Image and Info */}
           <div className="col-lg-6">
             <div className="bg-white p-4 rounded shadow-sm">
@@ -575,18 +574,18 @@ const Contact = () => {
                 style={{ objectFit: 'cover', width: '100%', maxHeight: '400px' }}
               />
               <div>
-                <p style={{ fontSize: '16px', color: '#003366' }}>
+                <p className="text-muted">
                   At OrthoCare Kalyan, we are committed to providing the best orthopedic care tailored to your needs.
                   Whether you're recovering from surgery or managing a chronic condition, our expert team is here to help.
                   Contact us today to discuss your concerns and begin your journey toward better health.
                 </p>
-                <p style={{ fontSize: '16px', color: '#003366' }}>
+                <p className="fw-bold text-muted">
                   <strong>Address:</strong> 123 Ortho Street, Kalyan, Maharashtra, India
                 </p>
-                <p style={{ fontSize: '16px', color: '#003366' }}>
+                <p className="fw-bold text-muted">
                   <strong>Business Hours:</strong> Monday - Friday: 9:00 AM - 6:00 PM
                 </p>
-                <p style={{ fontSize: '16px', color: '#003366' }}>
+                <p className="fw-bold text-muted">
                   <strong>Contact Info:</strong> care@orthocarekalyan.com | +91 99999 99999
                 </p>
               </div>
@@ -613,7 +612,7 @@ const Contact = () => {
                   <label className="form-label">Message</label>
                   <textarea name="message" className="form-control" rows="5" value={formData.message} onChange={handleChange} required />
                 </div>
-                <button type="submit" className="btn btn-primary w-100" style={{ backgroundColor: '#003366', border: 'none' }}>
+                <button type="submit" className="btn btn-primary w-100 shadow-lg hover-zoom mb-3" style={{ backgroundColor: '#003366', border: 'none' }}>
                   Send Message
                 </button>
                 {statusMessage && (
@@ -629,7 +628,7 @@ const Contact = () => {
           <h4 className="mb-3" style={{ color: '#003366' }}>Need Help Fast?</h4>
           <a
             href="https://wa.me/919999999999?text=Hi%20I%20would%20like%20to%20get%20more%20information."
-            className="btn btn-success me-2 mb-2"
+            className="btn btn-success me-2 mb-2 btn-lg shadow-lg"
             style={{ padding: '10px 25px', fontSize: '16px' }}
             target="_blank"
             rel="noopener noreferrer"
@@ -638,7 +637,7 @@ const Contact = () => {
           </a>
           <a
             href="tel:+919999999999"
-            className="btn btn-outline-success mb-2"
+            className="btn btn-outline-success mb-2 btn-lg shadow-lg"
             style={{ padding: '10px 25px', fontSize: '16px' }}
             target="_blank"
             rel="noopener noreferrer"
