@@ -242,7 +242,6 @@ const Contact = () => {
 
       setFormData({ name: '', email: '', phone: '', message: '' });
       setShowToast(true);
-
     } catch (error) {
       console.error('Submission error:', error);
     }
@@ -256,9 +255,9 @@ const Contact = () => {
   }, [showToast]);
 
   return (
-    <div className="bg-light min-vh-100 d-flex flex-column">
+    <div className="bg-light d-flex flex-column min-vh-100">
       {/* Navbar */}
-      <nav className="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
         <div className="container">
           <Link className="navbar-brand fw-bold d-flex align-items-center" to="/">
             <img src="/images/ocare.png" alt="Logo" className="rounded-circle me-2" height="40" width="40" />
@@ -277,64 +276,71 @@ const Contact = () => {
         </div>
       </nav>
 
-      {/* Header Image */}
-      <div className="overflow-hidden" style={{ maxHeight: '300px' }}>
-        <img src="/images/contact.jpg" className="img-fluid w-100" alt="Contact" style={{ objectFit: 'cover' }} />
+      {/* Hero Section */}
+      <div className="bg-dark text-white py-5 text-center">
+        <div className="container">
+          <h1 className="display-5 fw-bold">Contact Us</h1>
+          <p className="lead">We’d love to hear from you – reach out with any questions, feedback, or appointment requests.</p>
+        </div>
       </div>
 
-      {/* Main Section */}
-      <div className="container py-5 flex-grow-1">
-        <div className="text-center mb-5">
-          <h2 className="fw-bold text-primary animate__animated animate__fadeInDown">Get in Touch</h2>
-          <p className="text-muted">We're here to help with all your orthopedic needs.</p>
-        </div>
-
-        <div className="row g-4 align-items-center">
-          <div className="col-lg-6 animate__animated animate__fadeInLeft">
-            <img src="/images/hospital.jpg" alt="Clinic" className="img-fluid rounded shadow" />
+      {/* Contact Section */}
+      <div className="container my-5">
+        <div className="row g-4">
+          <div className="col-lg-6 d-flex flex-column justify-content-center fade show">
+            <img src="/images/hospital.jpg" alt="Clinic" className="img-fluid rounded shadow mb-4" />
+            <div className="bg-primary text-white p-4 rounded shadow-sm">
+              <h4>Clinic Info</h4>
+              <p className="mb-1">📍 123 Ortho Street, Kalyan, MH</p>
+              <p className="mb-1">📧 care@orthocarekalyan.com</p>
+              <p className="mb-1">📞 +91 99999 99999</p>
+              <p className="mb-0">🕒 Mon–Sat: 9:00 AM – 6:00 PM</p>
+            </div>
           </div>
 
-          <div className="col-lg-6 animate__animated animate__fadeInRight">
-            <form onSubmit={handleSubmit} className="bg-white p-4 shadow rounded needs-validation" noValidate>
-              <div className="mb-3">
-                <label className="form-label">Name</label>
-                <input type="text" name="name" className="form-control" value={formData.name} onChange={handleChange} required />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Email</label>
-                <input type="email" name="email" className="form-control" value={formData.email} onChange={handleChange} required />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Phone</label>
-                <input type="tel" name="phone" className="form-control" value={formData.phone} onChange={handleChange} />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Message</label>
-                <textarea name="message" className="form-control" rows="4" value={formData.message} onChange={handleChange} required />
-              </div>
-              <button className="btn btn-primary w-100" type="submit">
-                <span className="spinner-border spinner-border-sm me-2 d-none" role="status" aria-hidden="true"></span>
-                Send Message
-              </button>
-            </form>
+          <div className="col-lg-6">
+            <div className="bg-white p-4 rounded shadow-sm border border-2 border-primary fade show">
+              <h4 className="text-primary mb-4">Send Us a Message</h4>
+              <form onSubmit={handleSubmit}>
+                <div className="mb-3">
+                  <label className="form-label">Full Name</label>
+                  <input type="text" name="name" className="form-control" required value={formData.name} onChange={handleChange} />
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Email</label>
+                  <input type="email" name="email" className="form-control" required value={formData.email} onChange={handleChange} />
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Phone</label>
+                  <input type="tel" name="phone" className="form-control" value={formData.phone} onChange={handleChange} />
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Message</label>
+                  <textarea name="message" className="form-control" rows="4" required value={formData.message} onChange={handleChange}></textarea>
+                </div>
+                <button type="submit" className="btn btn-primary w-100">
+                  ✉️ Send Message
+                </button>
+              </form>
+            </div>
           </div>
         </div>
 
-        {/* WhatsApp & Call */}
-        <div className="text-center mt-5 animate__animated animate__fadeInUp">
-          <h4 className="mb-3 text-primary">Need Help Fast?</h4>
+        {/* Quick Action Buttons */}
+        <div className="text-center mt-5 fade show">
+          <h4 className="text-primary mb-3">Need Help Fast?</h4>
           <a href="https://wa.me/919999999999" className="btn btn-success me-2 mb-2" target="_blank" rel="noopener noreferrer">
-            💬 Chat on WhatsApp
+            💬 WhatsApp
           </a>
           <a href="tel:+919999999999" className="btn btn-outline-success mb-2" target="_blank" rel="noopener noreferrer">
-            📞 Call Our Team
+            📞 Call Now
           </a>
         </div>
 
-        {/* Google Map */}
-        <div className="mt-5 shadow rounded overflow-hidden">
+        {/* Map */}
+        <div className="mt-5 rounded overflow-hidden shadow-sm border border-1 border-secondary fade show">
           <iframe
-            title="clinic-location"
+            title="Google Map"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.1160983873!2d72.74109983902492!3d19.207681931152422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be796b7f6e44e3f%3A0xe9536ad86bb3e50e!2sKalyan%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1615995970585!5m2!1sen!2sin"
             width="100%"
             height="350"
@@ -346,42 +352,31 @@ const Contact = () => {
       </div>
 
       {/* Toast Notification */}
-      <div className="position-fixed bottom-0 end-0 p-3" style={{ zIndex: 11 }}>
-        <div ref={toastRef} className="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+      <div className="position-fixed bottom-0 end-0 p-3" style={{ zIndex: 1055 }}>
+        <div
+          ref={toastRef}
+          className="toast text-bg-success border-0"
+          role="alert"
+          aria-live="assertive"
+          aria-atomic="true"
+        >
           <div className="d-flex">
-            <div className="toast-body">
-              ✅ Your message was sent successfully!
-            </div>
-            <button type="button" className="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            <div className="toast-body">✅ Your message was sent successfully!</div>
+            <button
+              type="button"
+              className="btn-close btn-close-white me-2 m-auto"
+              data-bs-dismiss="toast"
+              aria-label="Close"
+            ></button>
           </div>
         </div>
       </div>
 
       {/* Footer */}
-      <footer className="bg-primary text-white pt-4 pb-3 mt-auto">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-4 mb-3">
-              <h5>OrthoCare Kalyan</h5>
-              <p>We provide specialized orthopedic care, including bone and joint treatments, physical therapy, and expert consultations.</p>
-            </div>
-            <div className="col-md-4 mb-3">
-              <h5>Quick Links</h5>
-              <ul className="list-unstyled">
-                <li><Link className="text-white text-decoration-none" to="/">Home</Link></li>
-                <li><Link className="text-white text-decoration-none" to="/blog">Blog</Link></li>
-                <li><Link className="text-white text-decoration-none" to="/contact">Contact</Link></li>
-              </ul>
-            </div>
-            <div className="col-md-4 mb-3">
-              <h5>Contact Us</h5>
-              <p>123 Ortho Street, Kalyan, MH</p>
-              <p>Email: care@orthocarekalyan.com</p>
-              <p>Phone: +91 99999 99999</p>
-            </div>
-          </div>
-          <hr className="border-light" />
-          <p className="text-center mb-0">&copy; {new Date().getFullYear()} OrthoCare Kalyan</p>
+      <footer className="bg-primary text-white py-4 mt-auto">
+        <div className="container text-center">
+          <p className="mb-1">OrthoCare Kalyan - Dedicated to your joint health and mobility.</p>
+          <p className="mb-0">&copy; {new Date().getFullYear()} OrthoCare Kalyan. All rights reserved.</p>
         </div>
       </footer>
     </div>
