@@ -448,6 +448,9 @@
 
 // export default Contact;
 
+// //worked good
+
+
 import React, { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import { Link } from 'react-router-dom';
@@ -563,10 +566,10 @@ const Contact = () => {
           We are here to assist you. Please fill out the form and we'll get back to you as soon as possible.
         </p>
 
-        <div className="row align-items-stretch g-4">
+        <div className="row d-flex align-items-stretch g-4">
           {/* Left Side: Image and Info */}
-          <div className="col-lg-6">
-            <div className="bg-white p-4 rounded shadow-sm">
+          <div className="col-lg-6 d-flex">
+            <div className="bg-white p-4 rounded shadow-sm w-100">
               <img
                 src="/images/hospital.jpg"
                 alt="Clinic Front"
@@ -593,8 +596,8 @@ const Contact = () => {
           </div>
 
           {/* Right Side: Contact Form */}
-          <div className="col-lg-6">
-            <div className="bg-white p-4 rounded shadow-sm">
+          <div className="col-lg-6 d-flex">
+            <div className="bg-white p-4 rounded shadow-sm w-100">
               <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                   <label className="form-label">Name</label>
