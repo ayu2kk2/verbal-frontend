@@ -203,7 +203,7 @@
 
 // export default Contact;
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser'; 
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -211,7 +211,25 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
   const [statusMessage, setStatusMessage] = useState('');
+  const [callLogs, setCallLogs] = useState([]);
   const API = process.env.REACT_APP_API_URL;
+
+  // Fetching call logs from the backend API
+  useEffect(() => {
+    const fetchCallLogs = async () => {
+      try {
+        const response = await fetch(`${API}/api/call-logs`);
+        const data = await response.json();
+        if (response.ok) {
+          setCallLogs(data);
+        }
+      } catch (error) {
+        console.error('Error fetching call logs:', error);
+      }
+    };
+
+    fetchCallLogs();
+  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -303,21 +321,29 @@ const Contact = () => {
         <div className="row align-items-start g-4">
           {/* Left Side: Image and Info */}
           <div className="col-lg-6">
-            <img
-              src="/images/hospital.jpg"
-              alt="Clinic Front"
-              className="img-fluid rounded shadow mb-3"
-              style={{ maxHeight: '400px', objectFit: 'cover', width: '100%' }}
-            />
-            <div className="text-center">
-              <p style={{ fontSize: '16px', color: '#003366' }}>
-                At OrthoCare Kalyan, we are committed to providing the best orthopedic care tailored to your needs.
-                Whether you're recovering from surgery or managing a chronic condition, our expert team is here to help.
-                Contact us today to discuss your concerns and begin your journey toward better health.
-              </p>
-              <p style={{ fontSize: '16px', color: '#003366' }}>
-                <strong>Address:</strong> 123 Ortho Street, Kalyan, Maharashtra, India
-              </p>
+            <div className="d-flex flex-column align-items-center">
+              <img
+                src="/images/hospital.jpg"
+                alt="Clinic Front"
+                className="img-fluid rounded shadow mb-3"
+                style={{ maxHeight: '400px', objectFit: 'cover', width: '100%' }}
+              />
+              <div className="text-center" style={{ padding: '0 20px' }}>
+                <p style={{ fontSize: '16px', color: '#003366' }}>
+                  At OrthoCare Kalyan, we are committed to providing the best orthopedic care tailored to your needs.
+                  Whether you're recovering from surgery or managing a chronic condition, our expert team is here to help.
+                  Contact us today to discuss your concerns and begin your journey toward better health.
+                </p>
+                <p style={{ fontSize: '16px', color: '#003366' }}>
+                  <strong>Address:</strong> 123 Ortho Street, Kalyan, Maharashtra, India
+                </p>
+                <p style={{ fontSize: '16px', color: '#003366' }}>
+                  <strong>Business Hours:</strong> Monday - Friday: 9:00 AM - 6:00 PM
+                </p>
+                <p style={{ fontSize: '16px', color: '#003366' }}>
+                  <strong>Contact Info:</strong> care@orthocarekalyan.com | +91 99999 99999
+                </p>
+              </div>
             </div>
           </div>
 
