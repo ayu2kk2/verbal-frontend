@@ -226,14 +226,15 @@ const Home = () => {
   };
 
   return (
-    <div style={{ backgroundColor: '#f0f4f8' }}>
+    <div style={{ backgroundColor: '#eef3f7' }}>
       <Helmet>
         <title>OrthoCare | Orthopedic Specialists in Kalyan</title>
         <meta name="description" content="Orthopedic specialists in Kalyan providing expert bone and joint care." />
+        <link rel="icon" href="/images/ocare.png" />
       </Helmet>
 
       {/* Navbar */}
-      <nav className="navbar navbar-expand-lg navbar-dark py-3 shadow-lg" style={{ backgroundColor: '#003366' }}>
+      <nav className="navbar navbar-expand-lg navbar-dark py-3 shadow-sm" style={{ backgroundColor: '#003366' }}>
         <div className="container">
           <Link className="navbar-brand d-flex align-items-center fw-bold" to="/">
             <img
@@ -257,29 +258,38 @@ const Home = () => {
         </div>
       </nav>
 
-      {/* Carousel */}
-      <div id="heroCarousel" className="carousel slide carousel-fade" data-bs-ride="carousel">
+      {/* Hero Carousel */}
+      <div id="heroCarousel" className="carousel slide" data-bs-ride="carousel">
         <div className="carousel-inner" style={{ height: '500px', overflow: 'hidden' }}>
           {['slide1.jpg', 'slide2.jpg', 'slide3.jpg'].map((img, idx) => (
             <div
               key={img}
               className={`carousel-item ${idx === 0 ? 'active' : ''}`}
-              data-bs-interval="4000"
+              data-bs-interval="5000"
               style={{ height: '100%' }}
             >
               <img
                 src={`/images/${img}`}
                 className="d-block w-100"
                 alt={`Slide ${idx + 1}`}
-                style={{ height: '100%', objectFit: 'cover', filter: 'brightness(80%)' }}
+                style={{ height: '100%', objectFit: 'cover' }}
               />
-              <div className="carousel-caption d-none d-md-block animate__animated animate__fadeInUp">
-                <h3 className="text-white fw-bold">Expert Orthopedic Care</h3>
+              <div
+                className="carousel-caption d-none d-md-block animate__animated animate__fadeInUp"
+                style={{
+                  bottom: '40px',
+                  background: 'rgba(0, 0, 0, 0.5)',
+                  padding: '20px',
+                  borderRadius: '10px',
+                }}
+              >
+                <h3 className="text-white">Expert Orthopedic Care</h3>
                 <p className="text-light mb-0">Your bone health is our priority</p>
               </div>
             </div>
           ))}
         </div>
+
         <button className="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
           <span className="carousel-control-prev-icon" aria-hidden="true"></span>
           <span className="visually-hidden">Previous</span>
@@ -291,21 +301,30 @@ const Home = () => {
       </div>
 
       {/* Welcome Section */}
-      <section className="py-5 bg-white animate__animated animate__fadeIn">
+      <section className="py-5 bg-light">
         <div className="container text-center">
           <h2 className="fw-bold text-primary">Welcome to OrthoCare</h2>
-          <p className="lead text-secondary">Trusted orthopedic specialists dedicated to your health, mobility, and comfort.</p>
+          <p className="lead">Trusted orthopedic specialists dedicated to your health, mobility, and comfort.</p>
         </div>
       </section>
 
       {/* Facilities */}
-      <section className="py-5 bg-light animate__animated animate__fadeInUp">
+      <section className="py-5" style={{ backgroundColor: '#d9e5f1' }}>
         <div className="container">
           <div className="row align-items-center">
-            <div className="col-md-6 mb-2">
-              <img src="/images/facility.jpg" alt="Our Facility" className="img-fluid rounded shadow-lg" />
+            <div className="col-md-6 mb-4">
+              <div className="hover-shadow rounded overflow-hidden transition" style={{ transition: 'all 0.3s ease' }}>
+                <img
+                  src="/images/facility.jpg"
+                  alt="Our Facility"
+                  className="img-fluid rounded shadow"
+                  style={{ transition: 'transform 0.3s ease-in-out' }}
+                  onMouseOver={e => e.currentTarget.style.transform = 'scale(1.05)'}
+                  onMouseOut={e => e.currentTarget.style.transform = 'scale(1)' }
+                />
+              </div>
             </div>
-            <div className="col-md-6">
+            <div className="col-md-6 animate__animated animate__fadeInRight">
               <h3 className="text-primary">Modern Facilities & Technology</h3>
               <p>Our clinic is equipped with state-of-the-art technology to ensure accurate diagnosis and effective treatment.</p>
               <p>We offer a wide range of orthopedic services including joint replacement, physiotherapy, sports injury management, and more.</p>
@@ -314,13 +333,13 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Meet the Doctors */}
-      <section className="container py-5 animate__animated animate__fadeInUp">
-        <h2 className="text-center mb-5 text-primary fw-bold">Meet Our Specialists</h2>
+      {/* Doctors */}
+      <section className="container py-5">
+        <h2 className="text-center text-primary mb-5 fw-bold">Meet Our Specialists</h2>
         <div className="row">
           {doctors.map(doctor => (
             <div className="col-md-4 mb-4" key={doctor._id}>
-              <DoctorCard doctor={doctor} onClick={handleDoctorClick} />
+              <DoctorCard doctor={doctor} onClick={() => handleDoctorClick(doctor)} />
             </div>
           ))}
         </div>
@@ -331,7 +350,7 @@ const Home = () => {
         <>
           <div className="modal fade show d-block" tabIndex="-1" role="dialog">
             <div className="modal-dialog modal-dialog-centered" role="document">
-              <div className="modal-content shadow-lg animate__animated animate__fadeInDown">
+              <div className="modal-content shadow">
                 <div className="modal-header bg-primary text-white">
                   <h5 className="modal-title">{selectedDoctor.name}</h5>
                   <button type="button" className="btn-close btn-close-white" onClick={closeModal}></button>
