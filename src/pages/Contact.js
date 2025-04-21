@@ -222,7 +222,6 @@ const Contact = () => {
     e.preventDefault();
 
     try {
-      // Send Email via EmailJS
       await emailjs.send(
         'service_7yxiu7e',
         'template_8li5g7c',
@@ -230,7 +229,6 @@ const Contact = () => {
         'iO8QiaZje2w5HZ4Lu'
       );
 
-      // Saving to MongoDB through backend
       const response = await fetch(`${API}/api/contact`, {
         method: 'POST',
         headers: {
@@ -240,17 +238,13 @@ const Contact = () => {
       });
 
       const data = await response.json();
-      console.log('Backend response:', data);
-
-      if (!response.ok) {
-        throw new Error(data.message || 'Failed to save to DB');
-      }
+      if (!response.ok) throw new Error(data.message || 'Failed to save to DB');
 
       setStatusMessage('✅ Message sent successfully!');
       setFormData({ name: '', email: '', phone: '', message: '' });
 
     } catch (error) {
-      console.error('Submission error:', error); // we can see error details here
+      console.error('Submission error:', error);
       setStatusMessage('Failed to send message. Try again later.');
     }
   };
@@ -294,26 +288,43 @@ const Contact = () => {
         </div>
       </div>
 
-      {/* Contact Form */}
+      {/* Contact Form & Info */}
       <div className="container py-5">
         <h2 className="text-center mb-5 fw-bold" style={{ color: '#003366' }}>Get in Touch with Us</h2>
 
-        <div className="row align-items-center g-4">
-          {/* Image */}
-          <div className="col-lg-6 text-center">
-            <img
-              src="/images/hospital.jpg"
-              alt="Clinic Front"
-              className="img-fluid rounded shadow-lg"
-              style={{ maxHeight: '400px', objectFit: 'cover', width: '100%', transition: 'transform 0.3s ease-in-out' }}
-              onMouseEnter={(e) => e.target.style.transform = 'scale(1.05)'}
-              onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
-            />
+        <div className="row g-4 align-items-start">
+          {/* Left: Image + Info */}
+          <div className="col-lg-6">
+            <div className="mb-3">
+              <img
+                src="/images/hospital.jpg"
+                alt="Clinic Front"
+                className="img-fluid rounded shadow-sm"
+                style={{ maxHeight: '350px', objectFit: 'cover', width: '100%' }}
+              />
+            </div>
+            <div className="p-3 text-start small text-muted bg-light rounded shadow-sm border">
+              <p>
+                At <strong>OrthoCare Kalyan</strong>, we are committed to providing the best orthopedic care tailored to your needs.
+                Whether you're recovering from surgery or managing a chronic condition, our expert team is here to help.
+                Contact us today to discuss your concerns and begin your journey toward better health.
+              </p>
+              <p>
+                We are located in the heart of Kalyan, and our clinic is equipped with state-of-the-art facilities to offer you the best treatment.
+                Feel free to fill out the contact form, and our team will reach out to you as soon as possible.
+              </p>
+              <address className="mb-0">
+                <strong>OrthoCare Kalyan</strong><br />
+                123 Ortho Street, Kalyan, MH, 421301<br />
+                Phone: +91 99999 99999<br />
+                Email: <a href="mailto:care@orthocarekalyan.com" className="text-decoration-none">care@orthocarekalyan.com</a>
+              </address>
+            </div>
           </div>
 
-          {/* Form */}
+          {/* Right: Form */}
           <div className="col-lg-6">
-            <form onSubmit={handleSubmit} className="bg-white p-4 shadow-lg rounded border border-2">
+            <form onSubmit={handleSubmit} className="bg-white p-4 shadow-sm rounded border">
               <div className="mb-3">
                 <label className="form-label">Name</label>
                 <input type="text" name="name" className="form-control" value={formData.name} onChange={handleChange} required />
@@ -330,7 +341,7 @@ const Contact = () => {
                 <label className="form-label">Message</label>
                 <textarea name="message" className="form-control" rows="5" value={formData.message} onChange={handleChange} required />
               </div>
-              <button type="submit" className="btn btn-primary w-100" style={{ backgroundColor: '#003366', border: 'none', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
+              <button type="submit" className="btn btn-primary w-100" style={{ backgroundColor: '#003366', border: 'none' }}>
                 Send Message
               </button>
               {statusMessage && (
@@ -340,22 +351,7 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* New Information Section Below the Image */}
-        <div className="text-center mt-5">
-          <h4 className="fw-bold" style={{ color: '#003366' }}>Visit Us</h4>
-          <p className="lead" style={{ color: '#003366' }}>
-            We are located in the heart of Kalyan, Maharashtra, and our clinic is easily accessible to all.
-            Feel free to drop by for consultations, treatments, or just to meet our friendly staff.
-          </p>
-          <address>
-            <strong>OrthoCare Kalyan</strong><br />
-            123 Ortho Street, Kalyan, MH, 421301, India<br />
-            Phone: +91 99999 99999<br />
-            Email: <a href="mailto:care@orthocarekalyan.com" style={{ textDecoration: 'none', color: '#003366' }}>care@orthocarekalyan.com</a>
-          </address>
-        </div>
-
-        {/* WhatsApp Buttons */}
+        {/* WhatsApp + Call Buttons */}
         <div className="text-center mt-5">
           <h4 className="mb-3" style={{ color: '#003366' }}>Need Help Fast?</h4>
           <a
@@ -411,4 +407,16 @@ const Contact = () => {
             <div className="col-md-4 mb-4">
               <h5>Contact</h5>
               <p>123 Ortho Street, Kalyan, MH</p>
-              <p
+              <p>Email: care@orthocarekalyan.com</p>
+              <p>Phone: +91 99999 99999</p>
+            </div>
+          </div>
+          <hr className="border-top border-light" />
+          <p className="text-center mb-0">&copy; {new Date().getFullYear()} OrthoCare Kalyan. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default Contact;
