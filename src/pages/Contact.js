@@ -321,14 +321,14 @@ const Contact = () => {
         <div className="row align-items-start g-4">
           {/* Left Side: Image and Info */}
           <div className="col-lg-6">
-            <div className="d-flex flex-column align-items-center">
+            <div className="bg-white p-4 rounded shadow-sm">
               <img
                 src="/images/hospital.jpg"
                 alt="Clinic Front"
-                className="img-fluid rounded shadow mb-3"
-                style={{ maxHeight: '400px', objectFit: 'cover', width: '100%' }}
+                className="img-fluid rounded mb-3"
+                style={{ objectFit: 'cover', width: '100%', maxHeight: '400px' }}
               />
-              <div className="text-center" style={{ padding: '0 20px' }}>
+              <div>
                 <p style={{ fontSize: '16px', color: '#003366' }}>
                   At OrthoCare Kalyan, we are committed to providing the best orthopedic care tailored to your needs.
                   Whether you're recovering from surgery or managing a chronic condition, our expert team is here to help.
@@ -349,30 +349,32 @@ const Contact = () => {
 
           {/* Right Side: Contact Form */}
           <div className="col-lg-6">
-            <form onSubmit={handleSubmit} className="bg-white p-4 shadow rounded">
-              <div className="mb-3">
-                <label className="form-label">Name</label>
-                <input type="text" name="name" className="form-control" value={formData.name} onChange={handleChange} required />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Email</label>
-                <input type="email" name="email" className="form-control" value={formData.email} onChange={handleChange} required />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Phone</label>
-                <input type="text" name="phone" className="form-control" value={formData.phone} onChange={handleChange} />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Message</label>
-                <textarea name="message" className="form-control" rows="5" value={formData.message} onChange={handleChange} required />
-              </div>
-              <button type="submit" className="btn btn-primary w-100" style={{ backgroundColor: '#003366', border: 'none' }}>
-                Send Message
-              </button>
-              {statusMessage && (
-                <div className="alert alert-info text-center mt-3 mb-0">{statusMessage}</div>
-              )}
-            </form>
+            <div className="bg-white p-4 rounded shadow-sm">
+              <form onSubmit={handleSubmit}>
+                <div className="mb-3">
+                  <label className="form-label">Name</label>
+                  <input type="text" name="name" className="form-control" value={formData.name} onChange={handleChange} required />
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Email</label>
+                  <input type="email" name="email" className="form-control" value={formData.email} onChange={handleChange} required />
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Phone</label>
+                  <input type="text" name="phone" className="form-control" value={formData.phone} onChange={handleChange} />
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Message</label>
+                  <textarea name="message" className="form-control" rows="5" value={formData.message} onChange={handleChange} required />
+                </div>
+                <button type="submit" className="btn btn-primary w-100" style={{ backgroundColor: '#003366', border: 'none' }}>
+                  Send Message
+                </button>
+                {statusMessage && (
+                  <div className="alert alert-info text-center mt-3 mb-0">{statusMessage}</div>
+                )}
+              </form>
+            </div>
           </div>
         </div>
 
